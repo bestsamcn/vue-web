@@ -8,6 +8,7 @@
 		vue-cli		
 
 #步骤
-1. npm install
-2. npm run dev
-3. npm build
+1. git clone https://github.com/bestsamcn/vue-1.git
+2. npm install
+3. npm run dev
+4. npm build
