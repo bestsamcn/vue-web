@@ -1,0 +1,59 @@
+html,body{
+	padding:0;
+	margin:0;
+	overflow-x: hidden;
+}
+ul,li{
+	list-style:none;
+}
+a{
+	text-decoration: none;
+}
+ul,img{
+	padding:0;
+	margin:0;
+}
+*{
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box!important;
+}
+.outLeftInRight-transition,
+.fadeOutLeft-transition, 
+.fadeInLeft-transition {
+  opacity: 1;
+  z-index: 2;
+  position: relative;
+  transition: all .3s ease-in-out;
+}
+/* 进入时的状态，从右开始 */
+.outLeftInRight-enter,
+.fadeInLeft-enter,
+.fadeInLeft-leave {
+  transform: translateX(100%);
+  opacity: 0;
+}
+/* 离开时的状态，向左移动 */
+.outLeftInRight-leave,
+.fadeOutLeft-enter,
+.fadeOutLeft-leave {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.full-view{
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+.router-view{
+	position: absolute;
+	top:0;
+    padding:10px;
+	left:0;
+	padding-top:40px;
+    padding-bottom: 40px;
+    height: 100%;
+    overflow:auto;
+    width:100%;
+}
