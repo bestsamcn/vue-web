@@ -1,7 +1,14 @@
 # vue-1
 
-> A Vue.js project
+		vue简单实现购物车
 
+# 感谢
+[xiaoluoboding](http://xiaoluoboding.github.io/vue-demo-collection/shopping-cart/#!/)
+[yuhaolove](https://github.com/yuhaolove/jackblog-vue)
+
+
+# 依赖
+		vue,vuex,vue-router,vue-validator,vue-resource
 ## Build Setup
 
 ``` bash
