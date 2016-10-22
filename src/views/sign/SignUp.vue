@@ -47,6 +47,13 @@
         		}
         	}
         },
+        vuex:{
+        	getters:{
+        		userInfo:({sign})=>{
+					return sign.userInfo
+				}
+        	}
+        },
         methods:{
             nameInvalid(){
             	this.user.toastText = '用户名错误';
@@ -81,7 +88,12 @@
     			console.log(this.$signupForm)
 		        return this.user.password === this.user.repassword;
 		    }
-		}
+		},
+		route: {
+	    	activate:function (transition) {
+	            this.userInfo.uid ? transition.redirect('/') : transition.next()
+    		}
+    	}
 
 	}
 </script>

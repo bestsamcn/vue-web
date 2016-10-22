@@ -5,6 +5,7 @@
             <router-view></router-view>
         </div>
         <m-footer v-if="isShowFooter"></m-footer>
+        <sign-out v-if="!isShowFooter"></sign-out>
     </div>
 </template>
 
@@ -12,6 +13,8 @@
 import mNav from './include/nav.vue'
 import store from './vuex/store.js'
 import mFooter from './include/footer.vue'
+import signOut from './views/sign/SignOut.vue'
+import {userLogin} from './vuex/actions.js'
 
 import 'reset.css'
 import 'animate.css'
@@ -23,18 +26,38 @@ export default {
     store,
     data(){
         return{
-            isShowFooter:true
+            // isShowFooter:true
+        }
+    },
+    vuex:{
+        actions:{
+            userLogin
+        },
+        getters:{
+            userInfo:({sign})=>sign.userInfo
         }
     },
     replace:false,
     components: {
         mNav,
-        mFooter
+        mFooter,
+        signOut
     },
-    create(){
-        if(!!this.$store.store.sign.userInfo){
-            this.isShowFooter = false;
-            console.log(this.$store.store)
+    created(){
+        this.userLogin()
+    },
+    ready(){
+        if(!!this.userInfo.uid){
+            this.isShowFooter =false;
+        }
+    },
+    computed:{
+        isShowFooter(){
+            let b = true;
+            if(!!this.userInfo.uid){
+                b = false; 
+            }
+            return b
         }
     }
 }

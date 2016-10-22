@@ -80,12 +80,15 @@
             			method:'post',
             			emulateJSON:true,
             			body:that.user,
-            			credentials:true
+            			credientials:true
             		}).then(function(res){
             			if(!res.ok || res.body.retCode !== 0) {
             				that.toast.toastText='登录失败';
             				that.toast.toastShow = true;
             				return;
+            			}
+            			if(window.localStorage){
+            				window.localStorage['userInfo'] = JSON.stringify(res.body.data);
             			}
             			that.userLogin(res.body.data);
             			that.$route.router.go({path:'/'})
@@ -98,7 +101,7 @@
 		},
 		route: {
 	    	activate:function (transition) {
-	            this.userInfo.id ? transition.redirect('/') : transition.next()
+	            this.userInfo.uid ? transition.redirect('/') : transition.next()
     		}
     	}
 	}

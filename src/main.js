@@ -11,7 +11,10 @@ Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
 
-
+Vue.http.interceptors.push((request, next) => {
+    request.credentials = true
+    next()
+})
 
 
 const router = new VueRouter({
