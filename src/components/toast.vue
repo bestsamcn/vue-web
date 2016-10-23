@@ -19,7 +19,7 @@
 			duration:{
 				type:String,
 				require:false,
-				default:'3000'
+				default:'2000'
 			}
 		},
 		ready(){
@@ -37,23 +37,28 @@
 </script>
 <style>
     .toast{
-        position:absolute;
+        position:fixed;
         left:50%;
-        margin-left:-25%;
-        bottom:30px;
+        top:50%;
+        transform: scale(1);
         display:block;
-        width:200px;
+        width:160px;
+        height:30px;
+        margin-top:-15px;
+        line-height: 30px;
+        margin-left:-80px;
         height:auto;
         text-align:center;
         color:white;
-        background-color:rgba(0,0,0,0.5);
-        border-radius:10px;
+        background-color:rgba(0,0,0,0.8);
+        border-radius:30px;
         z-index:10;
-        transform:scale(1);
+        font-size: 12px;
         padding:5px;
     }
     .toast-transition{
         transition: all .3s ease;
+        transform-origin: center center;
     }
     .toast-enter{
         opacity:0;

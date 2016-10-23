@@ -32,7 +32,10 @@
         name:'count',
         vuex:{
         	getters:{
-        		iphone:({index})=>index.carts
+        		iphone:({index})=>{
+        			console.log(index.carts)
+        			return index.carts
+        		}
         	},
         	actions:{
         		delItem

@@ -1,65 +1,99 @@
 <template>
 	<div class="router-view">
-		<toast :toast-show.sync="toastShow" :toast-text="toastText"></toast>
-		<div id="signupForm">
-			<validator name="signupValidate">
-			<form class="form">
-			    <h4>signUp</h4>
-				<ul>
-					<li>
-						<input type="text" @invalid="nameInvalid" id="username"  v-validate:username="['username']" initial="off" detect-change="off" v-model="name" name="username" placeholder="id">
-					</li>
-					<!-- <li>
-						<input type="password" @invalid="pwsdInvalid" v-validate:password="['password']" initial="off" detect-change="off" v-model="password" name="password" placeholder="password">
-					</li>
-					<li>
-						<input type="password" @invalid="rePwsdInvalid" v-validate:repassword="['password']" initial="off" detect-change="off" v-model="repassword" name="repassword" placeholder="repassword">
-					</li> -->
-					<li>
-						<a href="javascript:;" @click="signUp()">signUp</a>
-					</li>
-				</ul>
-				<p class="to-signup"><a v-link="{path:'/sign/signIn'}">to signIn?</a></p>
-			</form>
+		<toast :toast-show.sync="user.toastShow" :toast-text="user.toastText"></toast>
+		<div class="form">
+			<validator name="signupForm">
+				<form novalidate>
+					<h4>signIn</h4>
+					<ul>
+						<li>
+						    <input type="password" style="position:absolute;top:-100000px;"/>
+							<input type="text" @invalid="nameInvalid()" v-validate:username="{username:true}" initial="off" detect-change="off" autocomplete="off" v-model="user.username" name="username" placeholder="username"></li>
+						<li>
+						    <input type="password" style="position:absolute;top:-100000px;"/>
+							<input type="password" @invalid="pwsdInvalid()" v-validate:password="{password:true}" initial="off" autocomplete="off" detect-change="off" v-model="user.password" name="password" placeholder="password"></li>
+						<li>
+						    <input type="password" style="position:absolute;top:-100000px;"/>
+							<input type="password" @invalid="rePwsdInvalid()" v-validate:repassword="{match:matchPassword}" initial="off" detect-change="off" autocomplete="off" v-model="user.repassword" name="repassword" placeholder="repassword"></li>
+						<li>
+							<a href="javascript:;" :class="{'active':!$signupForm.invalid}" @click="signUp($signupForm)">signUp</a>
+						</li>
+					</ul>
+					<p class="to-signup">
+						<a  v-link="{path:'/sign/signIn'}">to signIn?</a>
+					</p>
+				</form>
 			</validator>
 		</div>
 	</div>
 
 </template>
 <script>
-    import validator from './validations';
-    import Toast from '../../components/toast.vue';
+    import validator from '../../validations/validate.js'
+    import Toast from '../../components/toast.vue'
 	export default{
-		el (){
-		    return '#signupForm'
-		},
 		components:{
 			Toast
 		},
         data(){
         	return{
-        		name:'',
-        		password:'',
-        		repassword:'',
-        		toastShow:false,
-                toastText:''
+        		user:{
+        			username:'',
+	        		password:'',
+	        		repassword:'',
+	        		toastShow:false,
+	                toastText:'',
+	                isValid:false
+        		}
+        	}
+        },
+        vuex:{
+        	getters:{
+        		userInfo:({sign})=>{
+					return sign.userInfo
+				}
         	}
         },
         methods:{
             nameInvalid(){
-            	this.toastShow= true;
-            	this.toastText = '用户名格式错误';
+            	this.user.toastText = '用户名错误';
+        		this.user.toastShow= true;
             },
-            pswdInvalid(){
-            	this.toastShow= true;
-            	this.toastText = '密码格式错误';
+            pwsdInvalid(){
+            	this.user.toastShow= true;
+            	this.user.toastText = '密码错误';
             },
-
+            rePwsdInvalid(){
+                this.user.toastShow= true;
+            	this.user.toastText = '密码不一致';
+            },
             signUp(){
             	var that = this;
+            	if(!that.$signupForm.dirty) return;
+            	if(!that.$signupForm.invalid){
+                    this.$http({
+                    	headers: {
+			                'X-Requested-With': 'XMLHttpRequest'
+			            },
+                    	url:'http://10.28.10.14:8081/VideoProject/pipes/v1/liveVod/getListLiveVod',
+                    	method:'get',
+                    	emulateJSON:true,
 
+                    }).then(res=>{console.log(res)},res=>{console.log(res)})
+            	}
             }
-        }
+        },
+        computed: {
+    		matchPassword: function () {
+    			console.log(this.$signupForm)
+		        return this.user.password === this.user.repassword;
+		    }
+		},
+		route: {
+	    	activate:function (transition) {
+	            this.userInfo.uid ? transition.redirect('/') : transition.next()
+    		}
+    	}
 	}
 </script>
 <style>
@@ -91,8 +125,8 @@
 		width:100%;
 		height:40px;
 		line-height: 40px;
-		text-align:center;
 		background:#ddd;
+		text-align:center;
 		color:#fff;
 	}
 	.form ul li a.active{

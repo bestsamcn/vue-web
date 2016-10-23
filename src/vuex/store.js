@@ -11,9 +11,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import index from './modules/index.js'
+import sign from './modules/sign.js'
 
 export default new Vuex.Store({
 	modules:{
-		index
+		index,
+        sign
 	}
 })
