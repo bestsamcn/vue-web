@@ -1,3 +1,34 @@
+<style>
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#app {
+  color: #2c3e50;
+  margin:0 auto;
+  max-width: 600px;
+  font-family: Source Sans Pro, Helvetica, sans-serif;
+  text-align: center;
+}
+
+#app a {
+  color: #42b983;
+  text-decoration: none;
+}
+
+.logo {
+  width: 100px;
+  height: 100px
+}
+</style>
+
 <template>
   <div class="router-view" id="app" transition="outLeftInRight">
      <index-slider></index-slider>
@@ -35,33 +66,3 @@
   }
 </script>
 
-<style>
-html {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-#app {
-  color: #2c3e50;
-  margin:0 auto;
-  max-width: 600px;
-  font-family: Source Sans Pro, Helvetica, sans-serif;
-  text-align: center;
-}
-
-#app a {
-  color: #42b983;
-  text-decoration: none;
-}
-
-.logo {
-  width: 100px;
-  height: 100px
-}
-</style>

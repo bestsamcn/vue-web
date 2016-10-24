@@ -15,6 +15,8 @@
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1",
     "reset.css": "^2.0.2",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^2.3.1",
     "vue": "^1.0.21",
     "vue-resource": "^1.0.3",
     "vue-router": "^0.7.13",

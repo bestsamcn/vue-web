@@ -1,9 +1,3 @@
-<template>
-	<div class="footer">
-		<a v-link="{name:'signin'}">登录</a>
-		<a v-link="{path:'/sign/signUp'}">注册</a>
-	</div>
-</template>
 <style scoped>
 	.footer{
 		width:100%;
@@ -29,7 +23,7 @@
 		display: -webkit-flex;
 		align-items: center;
 		justify-content: center;
-}
+    }
 	.footer a i{
 		background:red;
 		border-radius: 50%;
@@ -44,5 +38,10 @@
 	  background: #0090ff;
 	  color:#fff !important;
 	}
-
 </style>
+<template>
+	<div class="footer">
+		<a v-link="{name:'signin'}">登录</a>
+		<a v-link="{path:'/sign/signUp'}">注册</a>
+	</div>
+</template>

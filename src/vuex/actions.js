@@ -14,6 +14,7 @@ export const addItem = makeActions(type.ADD_ITEM)
 export const delItem = makeActions(type.DEL_ITEM)
 export const userLogin = makeActions(type.USER_LOGIN)
 export const userLogout = makeActions(type.USER_LOGOUT)
+export const setAside = makeActions(type.SET_ASIDE)
 
 
 function makeActions(type){

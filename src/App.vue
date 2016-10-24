@@ -1,14 +1,22 @@
+<style lang="styl" src="./assets/styl/main/styl-main.styl"></style>
+<style>
+    .index-content{
+        width:100%;
+        height:100%;
+    }
+    
+</style>
 <template>
     <div class="index-content">
-        <m-nav></m-nav>
+        <m-nav :is-show-aside.sync="isShowAside"></m-nav>
         <div class="full-view">
             <router-view></router-view>
         </div>
         <m-footer v-if="isShowFooter"></m-footer>
         <sign-out v-if="!isShowFooter"></sign-out>
     </div>
-    <aside :show.sync="showLeft" placement="left" header="Title" width="250">
-
+    <aside :show.sync="isShowAside" placement="left" header="Title" width="250">
+      
     </aside>
 </template>
 
@@ -30,7 +38,7 @@ export default {
     store,
     data(){
         return{
-            showLeft:false
+            isShowAside:false
         }
     },
     vuex:{
@@ -67,11 +75,3 @@ export default {
     }
 }
 </script>
-
-<style>
-    .index-content{
-        width:100%;
-        height:100%;
-    }
-    
-</style>

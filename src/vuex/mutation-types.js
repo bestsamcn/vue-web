@@ -13,3 +13,4 @@ export const DEL_ITEM = 'DEL_ITEM'
 export const USER_LOGIN = 'USER_LOGIN'
 export const USER_LOGOUT = 'USER_LOGOUT'
 
+export const SET_ASIDE = 'SET_ASIDE'
