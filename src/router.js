@@ -4,16 +4,16 @@
  * @date    2016-10-13 11:59:57
  * @version 1.0
  */
-import Hello from './views/Hello.vue'
+import Index from './views/Index.vue'
 import Cart from './views/Cart.vue'
 import Count from './views/Count.vue'
 import SignIn from './views/SignIn.vue'
 import SignUp from './views/sign/SignUp.vue'
 export default router => {
     router.map({
-        '/hello': {
-            name:'hello',
-            component: Hello
+        '/index': {
+            name:'index',
+            component: Index
         },
         '/cart': {
             name:'cart',
@@ -45,6 +45,6 @@ export default router => {
         }
     });
     router.redirect({
-        '*': '/hello'
+        '*': '/index'
     })
 }

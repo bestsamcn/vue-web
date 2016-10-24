@@ -1,5 +1,7 @@
 <template>
   <div class="router-view" id="app" transition="outLeftInRight">
+     <index-slider></index-slider>
+    
     <img class="logo" src="../assets/img/logo.png">
     <div class="hello">
       <h1>Hello World</h1>
@@ -25,9 +27,12 @@
 </template>
 
 <script>
-
-export default {
-}
+  import indexSlider from './index/slider.vue'
+  export default {
+    components:{
+      indexSlider
+    }
+  }
 </script>
 
 <style>

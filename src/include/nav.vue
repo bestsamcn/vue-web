@@ -1,6 +1,6 @@
 <template>
 	<div class="nav">
-		<a v-link="{path:'/hello'}">首页</a>
+		<a v-link="{path:'/index'}">首页</a>
 		<a v-link="{path:'/cart'}">商品</a>
 		<a v-link="{path:'/count'}">购物车<i>{{cartsAmout}}</i></a>
 	</div>

@@ -1,11 +1,24 @@
 <template>
+	<toast :toast-show.sync="toast.toastShow" :toast-text="toast.toastText"></toast>
 	<div class="sign-out">
 		<a href="javascipt:;" @click="signOut()">退出</a>
 	</div>
 </template>
 <script>
+    import toast from '../../components/toast'
     import { userLogout } from '../../vuex/actions.js'
 	export default{
+		components:{
+			toast
+		},
+		data(){
+			return{
+				toast:{
+					toastText:'',
+					toastShow:false
+				}
+			}
+		},
         vuex:{
         	actions:{
         		userLogout
@@ -13,17 +26,18 @@
         },
 		methods:{
 			signOut(){
-				this.$http({
+				var that = this;
+				that.$http({
 					method:'get',
 					url:'http://10.28.10.14:8081/VideoProject/pipes/v1/user/logout',
 					emulateJSON:true
 				}).then(function(res){
 					if(!res.ok || res.body.retCode !== 0) {
-        				that.toast.toastText='登录失败';
+        				that.toast.toastText='退出失败';
         				that.toast.toastShow = true;
         				return;
         			}
-        			this.userLogout()
+        			that.userLogout()
 				})
 			}
 		}

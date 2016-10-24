@@ -7,6 +7,9 @@
         <m-footer v-if="isShowFooter"></m-footer>
         <sign-out v-if="!isShowFooter"></sign-out>
     </div>
+    <aside :show.sync="showLeft" placement="left" header="Title" width="250">
+
+    </aside>
 </template>
 
 <script>
@@ -15,6 +18,7 @@ import store from './vuex/store.js'
 import mFooter from './include/footer.vue'
 import signOut from './views/sign/SignOut.vue'
 import {userLogin} from './vuex/actions.js'
+import { aside } from 'vue-strap'
 
 import 'reset.css'
 import 'animate.css'
@@ -26,7 +30,7 @@ export default {
     store,
     data(){
         return{
-            // isShowFooter:true
+            showLeft:false
         }
     },
     vuex:{
@@ -41,7 +45,8 @@ export default {
     components: {
         mNav,
         mFooter,
-        signOut
+        signOut,
+        aside
     },
     created(){
         this.userLogin()
