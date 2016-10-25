@@ -57,3 +57,9 @@ ul,img{
     overflow:auto;
     width:100%;
 }
+.mask-transition{
+  transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms .3s;
+}
+.mask-enter,.mask-leave{
+  background:rgba(0,0,0,0)
+}

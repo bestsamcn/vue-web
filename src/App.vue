@@ -3,11 +3,16 @@
     .index-content{
         width:100%;
         height:100%;
+        transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
+        -webkit-transform:translate3d(0,0,0)
+    }
+    .index-content.active{
+        -webkit-transform:translate3d(30%,0,0)
     }
     
 </style>
 <template>
-    <div class="index-content">
+    <div class="index-content" :class="{'active':isShowAside}">
         <m-nav :is-show-aside.sync="isShowAside"></m-nav>
         <div class="full-view">
             <router-view></router-view>
@@ -15,9 +20,7 @@
         <m-footer v-if="isShowFooter"></m-footer>
         <sign-out v-if="!isShowFooter"></sign-out>
     </div>
-    <aside :show.sync="isShowAside" placement="left" header="Title" width="250">
-      
-    </aside>
+    <aside :is-show-aside.sync="isShowAside"></aside>
 </template>
 
 <script>
@@ -26,8 +29,9 @@ import store from './vuex/store.js'
 import mFooter from './include/footer.vue'
 import signOut from './views/sign/SignOut.vue'
 import {userLogin} from './vuex/actions.js'
-import { aside } from 'vue-strap'
+import aside  from './components/aside.vue'
 
+import '../node_modules/font-awesome/css/font-awesome.min.css'
 import 'reset.css'
 import 'animate.css'
 import './assets/css/base.css'
