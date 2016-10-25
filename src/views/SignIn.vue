@@ -73,6 +73,7 @@
 	</div>
 </template>
 <script>
+    import { IMG_URL,ROOT_API } from '../api/config.js'
     import validator from '../validations/validate.js' 
     import Toast from '../components/toast.vue'
     import { userLogin } from '../vuex/actions.js'
@@ -120,7 +121,7 @@
             	if(!that.$signinForm.dirty) return;
             	if(!that.$signinForm.invalid){
             		that.$http({
-            			url:'http://10.28.10.14:8081/VideoProject/pipes/v1/user/login',
+            			url:ROOT_API+'/pipes/v1/user/login',
             			method:'post',
             			emulateJSON:true,
             			body:that.user,

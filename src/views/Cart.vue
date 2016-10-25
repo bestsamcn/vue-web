@@ -164,9 +164,9 @@
         },
         vuex:{
         	getters:{
-                iphone6s:({index})=>{
-                	console.log(index.iphone6s);
-                	return index.iphone6s;
+                iphone6s:({shop})=>{
+                	console.log(shop.iphone6s);
+                	return shop.iphone6s;
                 }
         	},
         	actions:{

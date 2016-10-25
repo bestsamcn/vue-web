@@ -30,39 +30,47 @@ body {
 </style>
 
 <template>
-  <div class="router-view" id="app" transition="outLeftInRight">
-     <index-slider></index-slider>
-    
-    <img class="logo" src="../assets/img/logo.png">
-    <div class="hello">
-      <h1>Hello World</h1>
+    <div class="router-view" id="app" transition="outLeftInRight">
+        <index-slider></index-slider>
     </div>
-    <p>
-      Welcome to your Vue.js app!
-    </p>
-    <p>
-      To get a better understanding of how this boilerplate works, check out
-      <a href="http://vuejs-templates.github.io/webpack" target="_blank">its documentation</a>.
-      It is also recommended to go through the docs for
-      <a href="http://webpack.github.io/" target="_blank">Webpack</a> and
-      <a href="http://vuejs.github.io/vue-loader/" target="_blank">vue-loader</a>.
-      If you have any issues with the setup, please file an issue at this boilerplate's
-      <a href="https://github.com/vuejs-templates/webpack" target="_blank">repository</a>.
-    </p>
-    <p>
-      You may also want to checkout
-      <a href="https://github.com/vuejs/vue-router/" target="_blank">vue-router</a> for routing and
-      <a href="https://github.com/vuejs/vuex/" target="_blank">vuex</a> for state management.
-    </p>
-  </div>
 </template>
 
 <script>
+  import { getBanner,setCarousel } from '../vuex/actions.js'
   import indexSlider from './index/slider.vue'
   export default {
     components:{
       indexSlider
+    },
+    vuex:{
+      getters:{
+        bannerList:({index})=>index.bannerList
+      },
+      actions:{
+        setCarousel,
+        getBanner
+      }
+    },
+    methods:{
+      getBannerList(){
+          var that = this
+          this.$http({
+              method:'get',
+              url:type.ROOT_API+'/pipes/v1/banner/getListBanner',
+              emulateJSON:true,
+              params:{modelBanner:1,seq:1,status:10}
+          }).then(function(res){
+              if(res.ok && res.data.retCode===0){
+                  that.getBanner(res.data.rows)
+              }
+          })
+      }
+    },
+    create(){
+        this.getBannerList()
+    },
+    ready(){
+      console.log(this.bannerList)
     }
   }
 </script>
-

@@ -5,7 +5,7 @@ Vue.use(VueResource)
 //跨域
 Vue.http.options.crossOrigin = true
 Vue.http.options.xhr = {withCredentials: true}
-const ROOT_API = 'http://10.28.10.14:8081/VideoProject'
+const ROOT_API = 'http://www.3wycmedia.com/VideoProject'
 
 //请求处理
 Vue.http.interceptors.push({

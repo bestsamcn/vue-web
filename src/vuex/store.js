@@ -9,15 +9,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
 import index from './modules/index.js'
+import shop from './modules/shop.js'
 import sign from './modules/sign.js'
 import common from './modules/common.js'
 
 export default new Vuex.Store({
 	modules:{
-		index,
+		shop,
         sign,
-        common
+        common,
+        index
 	}
 })

@@ -103,9 +103,9 @@
         name:'count',
         vuex:{
         	getters:{
-        		iphone:({index})=>{
-        			console.log(index.carts)
-        			return index.carts
+        		iphone:({shop})=>{
+        			console.log(shop.carts)
+        			return shop.carts
         		}
         	},
         	actions:{

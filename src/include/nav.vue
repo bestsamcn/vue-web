@@ -56,9 +56,9 @@
 		<!-- <a v-link="{path:'/index'}">首页</a>
 		<a v-link="{path:'/cart'}">商品</a>
 		<a v-link="{path:'/count'}">购物车<i>{{cartsAmout}}</i></a> -->
-		<a href="javascript:;" @click="toggleAside()" class="icon i-menu left-btn"></a>
+		<a href="javascript:;" @click="toggleAside()" class="icon fa fa-navicon fa-lg left-btn"></a>
 		<span class="header-tit">首页</span>
-		<a href="javascript:;" class="icon i-menu right-btn"></a>
+		<a href="javascript:;" class="icon fa fa-user-circle-o fa-lg right-btn"></a>
 	</div>
 </template>
 <script>

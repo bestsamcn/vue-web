@@ -17,20 +17,21 @@
         <div class="full-view">
             <router-view></router-view>
         </div>
-        <m-footer v-if="isShowFooter"></m-footer>
-        <sign-out v-if="!isShowFooter"></sign-out>
     </div>
-    <aside :is-show-aside.sync="isShowAside"></aside>
+    <aside :is-show-aside.sync="isShowAside" :is-login.sync="isShowFooter"></aside>
 </template>
 
 <script>
+//component
 import mNav from './include/nav.vue'
-import store from './vuex/store.js'
-import mFooter from './include/footer.vue'
-import signOut from './views/sign/SignOut.vue'
-import {userLogin} from './vuex/actions.js'
 import aside  from './components/aside.vue'
 
+//vuex
+import store from './vuex/store.js'
+import {userLogin} from './vuex/actions.js'
+import * as type from './api/config.js'
+
+//css/js
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import 'reset.css'
 import 'animate.css'
@@ -56,9 +57,10 @@ export default {
     replace:false,
     components: {
         mNav,
-        mFooter,
-        signOut,
         aside
+    },
+    methods:{
+
     },
     created(){
         this.userLogin()
@@ -71,7 +73,7 @@ export default {
     computed:{
         isShowFooter(){
             let b = true;
-            if(!!this.userInfo.uid){
+            if(!this.userInfo.uid){
                 b = false; 
             }
             return b
