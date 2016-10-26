@@ -58,6 +58,18 @@
 	font-size: 16px;
 	margin-right:20px;
 }
+.aside .index #index{
+	background:#ddd;
+}
+.aside .cart #cart{
+	background:#ddd;
+}
+.aside .count #count{
+	background:#ddd;
+}
+.aside .about #about{
+	background:#ddd;
+}
 .aside .aside-content a.active{
 	background:#ddd;
 }

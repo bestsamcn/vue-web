@@ -9,11 +9,11 @@
 				<span>{{userInfo.name ? userInfo.name :'Your Name'}}</span>
 			</a>
 		</div>
-		<div class="aside-content">
-			<a @click="goUrl('index')" class="fa fa-home fa-fw">首页</a>
-			<a @click="goUrl('cart')" class="fa fa-file-movie-o fa-fw">主播</a>
-			<a @click="goUrl('count')" class="fa fa-film fa-fw">回放</a>
-			<a  class="fa fa-address-book-o fa-fw">关于</a>
+		<div class="aside-content" :class="navState">
+			<a id="index" @click="goUrl('index')" class="fa fa-home fa-fw" :class="{}">首页</a>
+			<a id="cart" @click="goUrl('cart')" class="fa fa-file-movie-o fa-fw">主播</a>
+			<a id="count" @click="goUrl('count')" class="fa fa-film fa-fw">回放</a>
+			<a id="about" class="fa fa-address-book-o fa-fw">关于</a>
 		</div>
 		<div class="aside-footer">
 		    <a v-if="!isLogin" @click="goUrl('signin')" v-link="{name:'signin'}">登录</a>
@@ -24,7 +24,7 @@
 </template>
 <script>
     import Toast from './toast.vue'
-    import { userLogout } from '../vuex/actions.js'
+    import { userLogout,setAsideState } from '../vuex/actions.js'
     import { IMG_URL,ROOT_API } from '../api/config.js'
 	export default{
 		components:{
@@ -48,15 +48,18 @@
                 toast:{
                     toastShow:false,
                     toastText:'输入出错'
-                }
+                },
+                navState:'index'
             }
         },
         vuex:{
             actions:{
-            	userLogout
+            	userLogout,
+                setAsideState
             },
             getters:{
-            	userInfo:({sign})=>sign.userInfo
+            	userInfo:({sign})=>sign.userInfo,
+                routeName:({ route })=>route.name
             }
         },
         methods:{
@@ -84,7 +87,21 @@
         			that.userLogout()
         			that.isShowAside=false
 				})
-        	}
+        	},
+            setNavState(){
+                this.navState = this.routeName
+            }
+        },
+        watch:{
+            routeName:'setNavState'
+        },
+        ready(){
+            alert()
+            this.setNavState()
+            this.$nextTick(()=>{
+                let routeName= this.$route.name;
+                this.setAsideState(routeName)
+            })
         }
 	}
 </script>
