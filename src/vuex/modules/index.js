@@ -6,7 +6,9 @@ const state = {
 
 const mutations = {
 	[GET_BANNER](state,bannerList){
-        state.bannerList = bannerList
+		var obj ={};
+		obj['bannerList'] = bannerList
+        state.bannerList = obj.bannerList
 	},
 	[SET_CAROUSEL](){
 		$('#owlcarousel').owlCarousel({

@@ -15,7 +15,7 @@
     <div class="index-content" :class="{'active':isShowAside}">
         <m-nav :is-show-aside.sync="isShowAside"></m-nav>
         <div class="full-view">
-            <router-view></router-view>
+            <router-view keep-alive></router-view>
         </div>
     </div>
     <aside :is-show-aside.sync="isShowAside" :is-login.sync="isShowFooter"></aside>
@@ -28,10 +28,11 @@ import aside  from './components/aside.vue'
 
 //vuex
 import store from './vuex/store.js'
-import {userLogin} from './vuex/actions.js'
+import {userLogin } from './vuex/actions.js'
 import * as type from './api/config.js'
 
 //css/js
+
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import 'reset.css'
 import 'animate.css'
@@ -69,6 +70,7 @@ export default {
         if(!!this.userInfo.uid){
             this.isShowFooter =false;
         }
+        console.log('app')
     },
     computed:{
         isShowFooter(){

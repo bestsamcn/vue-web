@@ -1,41 +1,19 @@
 <template>
-	<div class="owl-carousel" v-if="bannerList" id="owlcarousel">
-        <div class="item" v-for="item in bannerList">
+	<div class="owl-carousel" v-if="sliderBannerList" id="owlcarousel">
+        <div class="item" v-for="item in sliderBannerList">
         	<img :src="BANNER_URL+item.banner">
         </div>
 	</div>
 </template>
 <script>
-    import '../../../node_modules/owlcarousel/owl-carousel/owl.carousel.css'
-    import '../../../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
-  
     import { setCarousel } from '../../vuex/actions.js'
-    
     import { ROOT_API ,BANNER_URL } from '../../api/config.js'
-
 	export default{
-		el(){
-			return '#owlcarousel'
-		},
-        vuex:{
-            getters:{
-                bannerList:({index})=>index.bannerList
-            },
-            actions:{
-                setCarousel
-            }
-        },
+        props:['sliderBannerList'],
         data(){
             return{
                 BANNER_URL:BANNER_URL
             }
-        },
-        ready(){
-            this.$nextTick(function(){
-                console.log(this.bannerList)
-               this.setCarousel()
-            });
-            // this.setCarousel()
         }
 	}
 </script>

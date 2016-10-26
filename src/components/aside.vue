@@ -4,7 +4,7 @@
     <div class="aside-mask" v-show="isShowAside" transition="mask"  @click="close()"></div>
 	<div class="aside" v-show="isShowAside" transition="aside">
 		<div class="aside-header">
-			<a href="">
+			<a>
 				<img :src="userInfo.headimg ? IMG_URL+userInfo.headimg : '../assets/img/user-nologin.png'" alt="">
 				<span>{{userInfo.name ? userInfo.name :'Your Name'}}</span>
 			</a>
