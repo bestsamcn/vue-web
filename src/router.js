@@ -4,47 +4,52 @@
  * @date    2016-10-13 11:59:57
  * @version 1.0
  */
-import Index from './views/Index.vue'
-import Cart from './views/Cart.vue'
-import Count from './views/Count.vue'
-import SignIn from './views/SignIn.vue'
-import SignUp from './views/sign/SignUp.vue'
+import Home from './components/Home/Index.vue'
+import Shop from './components/Shop/Index.vue'
+import Shopcount from './components/Shop/Count.vue'
+import Sign from './components/Sign/Index.vue'
+import Signup from './components/Sign/Signup.vue'
 export default router => {
     router.map({
-        '/index': {
-            name:'index',
-            component: Index
+        '/home': {
+            name:'home',
+            component: Home
         },
-        '/cart': {
-            name:'cart',
-            component: Cart
-        },
-        '/count': {
-            name:'count',
-            component: Count
+        '/shop': {
+            name:'shop',
+            component: {
+                template:'<router-view></router-view>'
+            },
+            subRoutes:{
+                '/cart':{
+                    name:'cart',
+                    component:Shop
+                },
+                '/count':{
+                    name:'count',
+                    component:Shopcount
+                }
+
+            }
         },
         '/sign': {
             name:'sign',
             component: {
-                template: '<router-view transition transition-mode="out-in"></router-view>'
+                template: '<router-view></router-view>'
             },
             subRoutes: {
-                '/': {
+                '/signin': {
                     name:'signin',
-                    component: SignIn
+                    component: Sign
                 },
-                '/signIn': {
-                    name:'signin',
-                    component: SignIn
-                },
-                '/signUp': {
+                '/signup': {
                     name:'signup',
-                    component: SignUp
+                    component: Signup
                 }
             }
         }
     });
     router.redirect({
-        '*': '/index'
+        '*': '/home'
     })
 }

@@ -18,6 +18,7 @@ export const setAside = makeActions(type.SET_ASIDE)
 export const getBanner = makeActions(type.GET_BANNER)
 export const setCarousel = makeActions(type.SET_CAROUSEL)
 export const setAsideState = makeActions(type.SET_ASIDE_STATE)
+export const setToast = makeActions(type.SET_TOAST)
 
 
 function makeActions(type){

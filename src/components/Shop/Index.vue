@@ -1,4 +1,4 @@
-<style src="../assets/css/cart.css" scoped></style>
+<style src="../../assets/css/shop/cart.css" scoped></style>
 <template>
 	<div class="router-view cart" transition="outLeftInRight">
 		<div class="product-pic">
@@ -46,7 +46,7 @@
 	</div>
 </template>
 <script>
-    import {changePrize,changeStyle,addItem} from '../vuex/actions.js'
+    import {changePrize,changeStyle,addItem} from '../../vuex/actions.js'
 	export default{
         name:'cart',
         data(){

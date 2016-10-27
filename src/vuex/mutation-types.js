@@ -5,6 +5,9 @@
  * @version 1.0
  */
 
+ //common
+ export const SET_TOAST = 'SET_TOAST'
+
 //shop
 export const CHANGE_PRIZE = 'CHANGE_PRIZE'
 export const CHANGE_STYLE = 'CHANGE_STYLE'
@@ -22,3 +25,5 @@ export const SET_CAROUSEL = 'SET_CAROUSEL'
 //aside
 export const SET_ASIDE = 'SET_ASIDE'
 export const SET_ASIDE_STATE = 'SET_ASIDE_STATE'
+
+

@@ -1,55 +1,10 @@
-<style>
-	.form{
-		width:100%;
-		font-size: 14px;
-	}
-	.form h4{
-		text-align:center;
-		line-height: 50px;
-	}
-	.form ul li{
-		width:100%;
-		margin-bottom: 10px;
-	}
-	.form ul li input{
-		width:100%;
-		border:none;
-		box-shadow: none;
-		border-bottom:1px solid #ddd;
-		color:#333;
-		height: 30px;
-		outline: none;
-		text-indent: 5px;
-		background:none;
-	}
-	.form ul li a{
-		display: block;
-		width:100%;
-		height:40px;
-		line-height: 40px;
-		text-align:center;
-		background:#ddd;
-		color:#fff;
-	}
-	.form ul li a.active{
-		background:#0090ff;
-	}
-	.form .to-signup{
-        text-align: center;
-        margin-top:20px;
-	}
-	.form .to-signup a{
-		color:#0090ff;
-	}
-</style>
+<style src="../../assets/css/sign/signin.css"></style>
 <template>
 	<div class="router-view">
-		<toast :toast-show.sync="toast.toastShow" :toast-text="toast.toastText"></toast>
-	    
 		<div class="form">
 		    <validator name="signinForm">
 		    <form novalidate>
-			    <h4>signIn</h4>
+			    <h4>登录</h4>
 				<ul>
 					<li>
 					    <input type="password" style="position:absolute;top:-100000px;"/>
@@ -64,7 +19,7 @@
 					</li>
 				</ul>
 				<p class="to-signup">
-				   <a v-link="{path:'/sign/signUp'}">to signUp?</a>
+				   <a v-link="{path:'/sign/signup'}">去注册?</a>
 				</p>
 			</form>
 			</validator>
@@ -73,47 +28,38 @@
 	</div>
 </template>
 <script>
-    import { IMG_URL,ROOT_API } from '../api/config.js'
-    import validator from '../validations/validate.js' 
-    import Toast from '../components/toast.vue'
-    import { userLogin } from '../vuex/actions.js'
+    import { IMG_URL,ROOT_API } from '../../api/config.js'
+    import validator from '../../utils/validate.js' 
+    import { userLogin, setToast, setAsideState } from '../../vuex/actions.js'
 
 	export default {
 		name:'signin',
 		components:{
-			Toast
 		},
 		data(){
 			return {
 				user:{
                     account:'',
                     password:''
-				},
-				toast:{
-                    toastShow:false,
-                    toastText:'输入出错'
 				}
 			}
 		},
 		vuex:{
 			actions:{
-				userLogin
+				userLogin,
+                setToast,
+                setAsideState
 			},
 			getters:{
-				userInfo:({sign})=>{
-					console.log(sign.userInfo)
-					return sign.userInfo
-				}
+				userInfo:({sign})=>sign.userInfo
 			}
 		},
 		methods:{
             nameInvalid(e){
-            	this.toast.toastText='用户名错误',
-            	this.toast.toastShow=true;
+            	this.setToast('用户名错误')
             },
             pswdInvalid(e){
-            	this.toast.toastText='密码错误',
-            	this.toast.toastShow=true
+            	this.setToast('密码错误')
             },
             signIn(e){
             	console.log(this.userInfo)
@@ -128,18 +74,17 @@
             			credientials:true
             		}).then(function(res){
             			if(!res.ok || res.body.retCode !== 0) {
-            				that.toast.toastText='登录失败';
-            				that.toast.toastShow = true;
+            				that.setToast('登录失败')
             				return;
             			}
             			if(window.localStorage){
             				window.localStorage['userInfo'] = JSON.stringify(res.body.data);
             			}
             			that.userLogin(res.body.data);
-            			that.$route.router.go({path:'/'})
+            			that.$route.router.go({path:'/home'});
+            			that.setAsideState('home')
             		},function(res){
-            			that.toast.toastText='登录失败';
-            			that.toast.toastShow = true;
+            			that.setToast('登录失败')
             		})
             	}
             }

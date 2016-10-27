@@ -1,54 +1,10 @@
-<style>
-	.form{
-		width:100%;
-		font-size: 14px;
-	}
-	.form h4{
-		text-align:center;
-		line-height: 50px;
-	}
-	.form ul li{
-		width:100%;
-		margin-bottom: 10px;
-	}
-	.form ul li input{
-		width:100%;
-		border:none;
-		box-shadow: none;
-		border-bottom:1px solid #ddd;
-		color:#333;
-		height: 30px;
-		outline: none;
-		text-indent: 5px;
-		background:none;
-	}
-	.form ul li a{
-		display: block;
-		width:100%;
-		height:40px;
-		line-height: 40px;
-		background:#ddd;
-		text-align:center;
-		color:#fff;
-	}
-	.form ul li a.active{
-		background:#0090ff;
-	}
-	.form .to-signup{
-        text-align: center;
-        margin-top:20px;
-	}
-	.form .to-signup a{
-		color:#0090ff;
-	}
-</style>
+<style src="../../assets/css/sign/signup.css"></style>
 <template>
 	<div class="router-view">
-		<toast :toast-show.sync="user.toastShow" :toast-text="user.toastText"></toast>
 		<div class="form">
 			<validator name="signupForm">
 				<form novalidate>
-					<h4>signIn</h4>
+					<h4>注册</h4>
 					<ul>
 						<li>
 						    <input type="password" style="position:absolute;top:-100000px;"/>
@@ -64,7 +20,7 @@
 						</li>
 					</ul>
 					<p class="to-signup">
-						<a  v-link="{path:'/sign/signIn'}">to signIn?</a>
+						<a  v-link="{path:'/sign/signin'}">去登录?</a>
 					</p>
 				</form>
 			</validator>
@@ -73,11 +29,9 @@
 
 </template>
 <script>
-    import validator from '../../validations/validate.js'
-    import Toast from '../../components/toast.vue'
+    import validator from '../../utils/validate.js'
 	export default{
 		components:{
-			Toast
 		},
         data(){
         	return{

@@ -1,3 +1,4 @@
+<style src="../../assets/css/common/slider.css" scoped></style>
 <template>
 	<div class="owl-carousel" v-if="sliderBannerList" id="owlcarousel">
         <div class="item" v-for="item in sliderBannerList">
@@ -17,12 +18,3 @@
         }
 	}
 </script>
-<style>
-	.owl-carousel{
-		width:100%;
-		/*max-height:250px;*/
-	}
-	.owl-carousel img{
-		width:100%;
-	}
-</style>

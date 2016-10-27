@@ -1,6 +1,5 @@
-<style src="../assets/css/aside.css"></style>
+<style src="../../assets/css/common/aside.css"></style>
 <template>
-    <toast :toast-show.sync="toast.toastShow" :toast-text="toast.toastText"></toast>
     <div class="aside-mask" v-show="isShowAside" transition="mask"  @click="close()"></div>
 	<div class="aside" v-show="isShowAside" transition="aside">
 		<div class="aside-header">
@@ -10,7 +9,7 @@
 			</a>
 		</div>
 		<div class="aside-content" :class="routeName">
-			<a id="index" @click="goUrl('index')" class="fa fa-home fa-fw" :class="{}">首页</a>
+			<a id="home" @click="goUrl('home')" class="fa fa-home fa-fw" :class="{}">首页</a>
 			<a id="cart" @click="goUrl('cart')" class="fa fa-file-movie-o fa-fw">主播</a>
 			<a id="count" @click="goUrl('count')" class="fa fa-film fa-fw">回放</a>
 			<a id="about" class="fa fa-address-book-o fa-fw">关于</a>
@@ -23,12 +22,10 @@
 	</div>
 </template>
 <script>
-    import Toast from './toast.vue'
-    import { userLogout,setAsideState } from '../vuex/actions.js'
-    import { IMG_URL,ROOT_API } from '../api/config.js'
+    import { userLogout,setAsideState } from '../../vuex/actions.js'
+    import { IMG_URL,ROOT_API } from '../../api/config.js'
 	export default{
 		components:{
-            Toast
 		},
         props:{
         	isShowAside:{
