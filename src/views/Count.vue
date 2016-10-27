@@ -104,7 +104,6 @@
         vuex:{
         	getters:{
         		iphone:({shop})=>{
-        			console.log(shop.carts)
         			return shop.carts
         		}
         	},

@@ -9,7 +9,7 @@
 				<span>{{userInfo.name ? userInfo.name :'Your Name'}}</span>
 			</a>
 		</div>
-		<div class="aside-content" :class="navState">
+		<div class="aside-content" :class="routeName">
 			<a id="index" @click="goUrl('index')" class="fa fa-home fa-fw" :class="{}">首页</a>
 			<a id="cart" @click="goUrl('cart')" class="fa fa-file-movie-o fa-fw">主播</a>
 			<a id="count" @click="goUrl('count')" class="fa fa-film fa-fw">回放</a>
@@ -59,7 +59,7 @@
             },
             getters:{
             	userInfo:({sign})=>sign.userInfo,
-                routeName:({ route })=>route.name
+                routeName:({ common })=>common.routeName
             }
         },
         methods:{
@@ -71,6 +71,7 @@
                 	name:name
                 })
                 this.isShowAside = false
+                this.setAsideState(name)
         	},
         	logout(){
                 var that = this;
@@ -87,21 +88,10 @@
         			that.userLogout()
         			that.isShowAside=false
 				})
-        	},
-            setNavState(){
-                this.navState = this.routeName
-            }
-        },
-        watch:{
-            routeName:'setNavState'
+        	}
         },
         ready(){
-            alert()
-            this.setNavState()
-            this.$nextTick(()=>{
-                let routeName= this.$route.name;
-                this.setAsideState(routeName)
-            })
+            this.setAsideState(this.$route.name)
         }
 	}
 </script>

@@ -56,8 +56,6 @@ const mutations = {
 	[ADD_ITEM](state){
 		let activeStyle = state.iphone6s.activeStyle 
 		let activeStorage = state.iphone6s.activeStorage
-		
-		console.log(state.carts,info)
 		for(let i = 0 ;i<state.carts.length ;i++){
 			if(state.carts[i].style === activeStyle && state.carts[i].storage === activeStorage){
 				let newCount = state.carts[i].count+1;
@@ -81,7 +79,6 @@ const mutations = {
 		state.carts.push(info);
 	},
 	[DEL_ITEM](state,item){
-		console.log(item)
 		if(state.carts.indexOf(item) === -1) return;
 		state.carts.splice(state.carts.indexOf(item),1);
 	}
