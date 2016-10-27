@@ -9,7 +9,7 @@
 <script>
     import '../../../node_modules/owlcarousel/owl-carousel/owl.carousel.css'
     import * as type from '../../api/config.js'
-    import { getBanner,setCarousel } from '../../vuex/actions.js'
+    import { getBanner, getBannerList } from '../../vuex/actions.js'
     import indexSlider from '../common/Slider.vue'
     export default {
         components:{
@@ -20,32 +20,26 @@
                 bannerList:({index})=>index.bannerList
             },
             actions:{
-                setCarousel,
-                getBanner
+                getBanner,
+                getBannerList
             }
         },
         methods:{
-            getBannerList(){
-                var that = this
-                this.$http({
-                    method:'get',
-                    url:type.ROOT_API+'/pipes/v1/banner/getListBanner',
-                    emulateJSON:true,
-                    params:{modelBanner:1,seq:1,status:10}
-                }).then(function(res){
-                    if(res.ok && res.data.retCode===0){
-                        that.getBanner(res.data.rows)
-                    }
-                }).then(function(){
-                    setTimeout(()=>{
-                        this.setCarousel();
-                    },500)
-                })
+            setCarousel(){
+                $('#owlcarousel').owlCarousel({
+                    loop: true,
+                    margin: 10,
+                    autoplay:true,
+                    items: 1,
+                    smartSpeed: 600
+                });
             }
         },
         created(){
             if(this.bannerList.length<1){
-                this.getBannerList()
+                this.getBannerList().then(()=>{
+                    this.setCarousel()
+                })
             }
 
         }

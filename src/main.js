@@ -7,18 +7,12 @@ import $ from 'jquery'
 import '../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
 
 
-
 import App from './App.vue'
 import routerMap from './router.js'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
-
-Vue.http.interceptors.push((request, next) => {
-    request.credentials = true
-    next()
-})
 
 
 

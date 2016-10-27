@@ -66,26 +66,15 @@
                 var that = this;
             	if(!that.$signinForm.dirty) return;
             	if(!that.$signinForm.invalid){
-            		that.$http({
-            			url:ROOT_API+'/pipes/v1/user/login',
-            			method:'post',
-            			emulateJSON:true,
-            			body:that.user,
-            			credientials:true
-            		}).then(function(res){
-            			if(!res.ok || res.body.retCode !== 0) {
-            				that.setToast('登录失败')
-            				return;
-            			}
-            			if(window.localStorage){
-            				window.localStorage['userInfo'] = JSON.stringify(res.body.data);
-            			}
-            			that.userLogin(res.body.data);
+            		this.userLogin(that.user).then((res)=>{
             			that.$route.router.go({path:'/home'});
             			that.setAsideState('home')
-            		},function(res){
-            			that.setToast('登录失败')
+            		},(res)=>{
+            			console.log(res)
+            			that.setToast('失败')
             		})
+            			
+            		
             	}
             }
 		},

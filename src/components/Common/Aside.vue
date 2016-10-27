@@ -74,7 +74,7 @@
                 var that = this;
 				that.$http({
 					method:'get',
-					url:ROOT_API+'/pipes/v1/user/logout',
+					url:ROOT_API+'/user/logout',
 					emulateJSON:true
 				}).then(function(res){
 					if(!res.ok || res.body.retCode !== 0) {

@@ -20,7 +20,6 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 
 //index
 export const GET_BANNER = 'GET_BANNER'
-export const SET_CAROUSEL = 'SET_CAROUSEL'
 
 //aside
 export const SET_ASIDE = 'SET_ASIDE'

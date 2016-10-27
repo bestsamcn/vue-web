@@ -51,7 +51,7 @@ export default {
         Toast
     },
     created(){
-        this.userLogin()
+        // this.userLogin()
     },
     ready(){
         if(!!this.userInfo.uid){

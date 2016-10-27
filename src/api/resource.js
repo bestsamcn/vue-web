@@ -1,31 +1,34 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-Vue.use(VueResource)
+import VueCookie from 'vue-cookie'
+import {
+    ROOT_API
+} from './config.js'
 
-//跨域
+//挂载
+Vue.use(VueResource)
+Vue.use(VueCookie)
+
+//各种处理,都很重要
+Vue.http.options.emulateHTTP = true;
+Vue.http.options.emulateJSON = true;
 Vue.http.options.crossOrigin = true
 Vue.http.options.xhr = {withCredentials: true}
-const ROOT_API = 'http://www.3wycmedia.com/VideoProject'
 
-//请求处理
-Vue.http.interceptors.push({
-  request (request) {
-    // 这里对请求体进行处理
-    request.headers = request.headers || {}
-    if (getCookie('token')) {
-      request.headers.Authorization = 'Bearer ' + getCookie('token').replace(/(^\")|(\"$)/g, '')
-    }
-    return request
-  },
-  response (response) {
-    // 这里可以对响应的结果进行处理
-    if (response.status === 401) {
-      signOut()
-      window.location.pathname = '/login'
-    }
-    return response
-  }
-});
+// Vue.http.interceptors.push({
+//     request(request) {
+//         console.log(Vue.cookie);
+//         return request
+//     },
+//     response(response) {
+//         // 这里可以对响应的结果进行处理
+//         if (response.status === 401) {
+//             console.log(response)
+//         }
+//         return response
+//     }
+// })
 
 
-export userLogin = Vue.resource(ROOT_API+'/pipes/v1/user/login{/}')
+export const getBannerList = Vue.resource(ROOT_API + '/banner/getListBanner?modelBanner={modelBanner}&seq={seq}&status={status}')
+export const userLogin = Vue.resource(ROOT_API + '/user/login')

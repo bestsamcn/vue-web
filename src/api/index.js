@@ -5,6 +5,8 @@
  * @version 1.0
  */
 
- import Vue from 'vue'
- import VueResource from 'vue-resource'
- Vue.use(VueResource)
+import { getBannerList, userLogin } from './resource.js'
+export default{
+	getBannerList:()=> getBannerList.get({modelBanner:'1',seq:'1',status:'10'}),
+	userLogin:(data)=>userLogin.save(data)
+}
