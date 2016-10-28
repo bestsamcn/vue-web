@@ -4,7 +4,7 @@
 	position: fixed;
 	left:0;
 	top:0;
-	background:rgba(0,0,0,0.3);
+	background:rgba(255,255,255,0.5);
 	z-index: 1000;
 }
 .loadEffect {
@@ -15,13 +15,14 @@
 	margin-left:-25px;
 	top:50%;
 	margin-top: -25px;
+	z-index: 1001;
 }
 .loadEffect span {
 	display: inline-block;
 	width: 10px;
 	height: 10px;
 	border-radius: 50%;
-	background: #000;
+	background: #0090ff;
 	position: absolute;
 	-webkit-animation: load 1.04s ease infinite;
 }
@@ -79,7 +80,10 @@
 }
 .loadMask-transition,.loadEffect-transition{
 	transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
-	opacity: 0.3;
+	opacity: 0.5;
+}
+.loadEffect-transition{
+	opacity: .8
 }
 .loadMask-enter,.loadMask-leave,.loadEffect-enter,.loadEffect-leave{
     opacity: 0;

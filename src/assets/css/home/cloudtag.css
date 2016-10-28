@@ -1,0 +1,14 @@
+
+.cloud-tag {
+    margin-top: 10px;
+    text-align: center;
+    position: relative;
+    padding:0 10px;
+}
+.cloud-tag .wrapper{
+	padding:10px 0;
+    background: url(../../img/bg1.jpg);
+}
+.cloud-tag .tags-list{
+	display: none
+}

@@ -8,16 +8,21 @@
 		<a v-link="{path:'/count'}">购物车<i>{{cartsAmout}}</i></a> -->
 		<a href="javascript:;" @click="toggleAside()" class="icon fa fa-navicon fa-lg left-btn"></a>
 		<span class="header-tit">首页</span>
-		<a href="javascript:;" class="icon fa fa-user-circle-o fa-lg right-btn"></a>
+        <a href="javascript:;" v-if="!userToken" class="icon fa fa-user-circle-o fa-lg right-btn"></a>
+		<a href="javascript:;" v-if="userToken" class="right-btn">
+            <img :src="userInfo.headimg ? IMG_URL+userInfo.headimg :'../assets/img/user-nologin.png'" alt="avatar">      
+        </a>
 	</div>
 </template>
 <script>
     import { setAside } from '../../vuex/actions.js'
+    import { IMG_URL } from '../../api/config.js'
 	export default{
         name:'nav',
         data(){
         	return{
-        		sum:0
+        		sum:0,
+                IMG_URL:IMG_URL
         	}
         },
         props:{
@@ -28,7 +33,9 @@
         },
         vuex:{
         	getters:{
-        		carts:({index})=>index.carts
+        		carts:({ index })=>index.carts,
+                userInfo:({ sign })=>sign.userInfo,
+                userToken:({ sign })=>sign.userToken
         	}
         },
         computed:{

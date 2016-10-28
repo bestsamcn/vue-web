@@ -24,6 +24,7 @@ export const USER_LOGOUT = 'USER_LOGOUT'
 
 //index
 export const GET_BANNER = 'GET_BANNER'
+export const GET_CLOUD_TAG_LIST = 'GET_CLOUD_TAG_LIST'
 
 //aside
 export const SET_ASIDE = 'SET_ASIDE'

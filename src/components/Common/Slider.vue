@@ -1,6 +1,6 @@
 <style src="../../assets/css/common/slider.css" scoped></style>
 <template>
-	<div class="owl-carousel" v-if="sliderBannerList" id="owlcarousel">
+	<div class="owl-carousel" v-if="!!sliderBannerList.length" id="owlcarousel">
         <div class="item" v-for="item in sliderBannerList">
         	<img :src="BANNER_URL+item.banner">
         </div>

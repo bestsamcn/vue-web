@@ -5,6 +5,7 @@ import Vuex from 'vuex'
 import VueResource from 'vue-resource'
 import $ from 'jquery'
 import '../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
+import './assets/js/tagcanvas.js'
 
 
 import App from './App.vue'

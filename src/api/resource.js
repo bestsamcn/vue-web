@@ -23,7 +23,7 @@ let httpTimer = null;
 Vue.http.interceptors.push((request,next)=>{
 	httpTimer = setTimeout(()=>{
         common.state.isLoading = true
-	},1500)
+	},500)
 	request.credentials=true;
 	next()
 })
@@ -31,16 +31,21 @@ Vue.http.interceptors.push((request,next)=>{
 	next(response=>{
 		if(httpTimer){
 			clearTimeout(httpTimer)
+            common.state.isLoading = false
 		}
         common.state.isLoading = false
 	 	return response
 	})
 })
 
-
-export const getBannerList = Vue.resource(ROOT_API + '/banner/getListBanner?modelBanner={modelBanner}&seq={seq}&status={status}')
+//用户部分
 export const userLogin = Vue.resource(ROOT_API + '/user/login')
 export const userLogout = Vue.resource(ROOT_API + '/user/logout')
 export const setUserBase = Vue.resource(ROOT_API+'/user/getCurrentUser')
 export const setUserInfo = Vue.resource(ROOT_API+'/user/getById?id={id}')
+
+//首页
+export const getBannerList = Vue.resource(ROOT_API + '/banner/getListBanner?modelBanner={modelBanner}&seq={seq}&status={status}')
+export const getCloudTagList = Vue.resource(ROOT_API + '/tag/getListTag?page={page}&rows={rows}')
+
 
