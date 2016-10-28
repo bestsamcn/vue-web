@@ -5,8 +5,11 @@
  * @version 1.0
  */
 
-import { getBannerList, userLogin } from './resource.js'
+import { getBannerList, userLogin, setUserBase, setUserInfo, userLogout } from './resource.js'
 export default{
 	getBannerList:()=> getBannerList.get({modelBanner:'1',seq:'1',status:'10'}),
-	userLogin:(data)=>userLogin.save(data)
+	userLogin:(data)=>userLogin.save(data),
+	userLogout:()=>userLogout.delete(),
+	setUserBase:()=>setUserBase.get(),
+	setUserInfo:(id)=>setUserInfo.get({id:id})
 }

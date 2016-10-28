@@ -30,7 +30,7 @@
 <script>
     import { IMG_URL,ROOT_API } from '../../api/config.js'
     import validator from '../../utils/validate.js' 
-    import { userLogin, setToast, setAsideState } from '../../vuex/actions.js'
+    import { userLogin, setUserBase, setUserInfo, setToast, setAsideState } from '../../vuex/actions.js'
 
 	export default {
 		name:'signin',
@@ -47,6 +47,8 @@
 		vuex:{
 			actions:{
 				userLogin,
+				setUserBase,
+				setUserInfo,
                 setToast,
                 setAsideState
 			},
@@ -62,11 +64,11 @@
             	this.setToast('密码错误')
             },
             signIn(e){
-            	console.log(this.userInfo)
                 var that = this;
             	if(!that.$signinForm.dirty) return;
             	if(!that.$signinForm.invalid){
             		this.userLogin(that.user).then((res)=>{
+            			this.setUserInfo(res.id)
             			that.$route.router.go({path:'/home'});
             			that.setAsideState('home')
             		},(res)=>{

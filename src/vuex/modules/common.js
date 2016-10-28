@@ -1,4 +1,4 @@
-import { SET_ASIDE, SET_ASIDE_STATE, SET_TOAST } from '../mutation-types.js'
+import { SET_ASIDE, SET_ASIDE_STATE, SET_TOAST, SET_LOADING } from '../mutation-types.js'
 
 const state ={
 	isShowAside:false,
@@ -6,7 +6,8 @@ const state ={
 	toast:{
 		isShow:false,
 		text:''
-	}
+	},
+	isLoading:false
 }
 
 const mutations = {
@@ -19,6 +20,9 @@ const mutations = {
 	[SET_TOAST](state,text){
 		state.toast.text = text || '未知错误'
 		state.toast.isShow = true
+	},
+	[SET_LOADING](state,isLoading){
+		state.isLoading = isLoading
 	}
 }
 export default{

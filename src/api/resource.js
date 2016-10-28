@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueCookie from 'vue-cookie'
+//直接引入，想都想不多
+import common from '../vuex/modules/common.js'
+
 import {
     ROOT_API
 } from './config.js'
@@ -10,25 +13,34 @@ Vue.use(VueResource)
 Vue.use(VueCookie)
 
 //各种处理,都很重要
-Vue.http.options.emulateHTTP = true;
-Vue.http.options.emulateJSON = true;
+Vue.http.options.emulateHTTP = true
+Vue.http.options.emulateJSON = true
 Vue.http.options.crossOrigin = true
 Vue.http.options.xhr = {withCredentials: true}
 
-// Vue.http.interceptors.push({
-//     request(request) {
-//         console.log(Vue.cookie);
-//         return request
-//     },
-//     response(response) {
-//         // 这里可以对响应的结果进行处理
-//         if (response.status === 401) {
-//             console.log(response)
-//         }
-//         return response
-//     }
-// })
+let httpTimer = null;
+//请求全局设置
+Vue.http.interceptors.push((request,next)=>{
+	httpTimer = setTimeout(()=>{
+        common.state.isLoading = true
+	},1500)
+	request.credentials=true;
+	next()
+})
+Vue.http.interceptors.push((request,next)=>{
+	next(response=>{
+		if(httpTimer){
+			clearTimeout(httpTimer)
+		}
+        common.state.isLoading = false
+	 	return response
+	})
+})
 
 
 export const getBannerList = Vue.resource(ROOT_API + '/banner/getListBanner?modelBanner={modelBanner}&seq={seq}&status={status}')
 export const userLogin = Vue.resource(ROOT_API + '/user/login')
+export const userLogout = Vue.resource(ROOT_API + '/user/logout')
+export const setUserBase = Vue.resource(ROOT_API+'/user/getCurrentUser')
+export const setUserInfo = Vue.resource(ROOT_API+'/user/getById?id={id}')
+

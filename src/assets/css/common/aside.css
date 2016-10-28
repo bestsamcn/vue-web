@@ -7,7 +7,7 @@
 	overflow: hidden;
 	overflow-y: auto;
 	background:#fff;
-	z-index: 10000;
+	z-index: 100;
 }
 .aside-transition{
 	transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
@@ -103,5 +103,5 @@
 	position: fixed;
 	left:0;
 	top:0;
-	z-index: 9999
+	z-index: 99
 }

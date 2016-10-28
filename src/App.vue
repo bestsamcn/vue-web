@@ -1,5 +1,6 @@
 <style src="./assets/css/common/app.css"></style>
 <template>
+<Loading :is-loading="isLoading"></Loading>
     <Toast :toast-show.sync="toast.isShow" :toast-text="toast.text"></Toast>
     <Navbar :is-show-aside.sync="isShowAside"></Navbar>
     <div class="index-content" :class="{'active':isShowAside}">
@@ -15,10 +16,11 @@
 import Aside  from './components/common/Aside.vue'
 import Navbar  from './components/common/Navbar.vue'
 import Toast  from './components/common/Toast.vue'
+import Loading  from './components/common/Loading.vue'
 
 //vuex
 import store from './vuex/store.js'
-import { userLogin } from './vuex/actions.js'
+import { setUserBase, setUserInfo, userLogout,setLoading } from './vuex/actions.js'
 
 //css/js
 import '../node_modules/font-awesome/css/font-awesome.min.css'
@@ -37,31 +39,41 @@ export default {
     },
     vuex:{
         actions:{
-            userLogin
+            setUserBase,
+            setUserInfo,
+            userLogout,
+            setLoading
         },
         getters:{
+            userToken:({ sign })=>sign.userToken,
             userInfo:({ sign })=>sign.userInfo,
-            toast:({ common })=>common.toast
+            toast:({ common })=>common.toast,
+            isLoading:({ common })=>common.isLoading
         }
     },
     replace:false,
     components: {
         Navbar,
         Aside,
-        Toast
+        Toast,
+        Loading
     },
     created(){
-        // this.userLogin()
+        this.setUserBase().then(res=>{
+            this.setUserInfo(res)
+        },res=>{
+            // this.userLogout()
+        })
     },
     ready(){
-        if(!!this.userInfo.uid){
+        if(!!this.userToken){
             this.isShowFooter =false;
         }
     },
     computed:{
         isShowFooter(){
             let b = true;
-            if(!this.userInfo.uid){
+            if(!this.userToken){
                 b = false; 
             }
             return b

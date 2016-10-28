@@ -5,7 +5,7 @@
 		<div class="aside-header">
 			<a>
 				<img :src="userInfo.headimg ? IMG_URL+userInfo.headimg : '../assets/img/user-nologin.png'" alt="">
-				<span>{{userInfo.name ? userInfo.name :'Your Name'}}</span>
+				<span>{{userInfo.account ? userInfo.account :'Your Name'}}</span>
 			</a>
 		</div>
 		<div class="aside-content" :class="routeName">
@@ -22,7 +22,7 @@
 	</div>
 </template>
 <script>
-    import { userLogout,setAsideState } from '../../vuex/actions.js'
+    import { userLogout,setAsideState, setToast } from '../../vuex/actions.js'
     import { IMG_URL,ROOT_API } from '../../api/config.js'
 	export default{
 		components:{
@@ -42,17 +42,14 @@
             return{
             	IMG_URL:IMG_URL,
             	ROOT_API:ROOT_API,
-                toast:{
-                    toastShow:false,
-                    toastText:'输入出错'
-                },
                 navState:'index'
             }
         },
         vuex:{
             actions:{
             	userLogout,
-                setAsideState
+                setAsideState,
+                setToast
             },
             getters:{
             	userInfo:({sign})=>sign.userInfo,
@@ -71,20 +68,16 @@
                 this.setAsideState(name)
         	},
         	logout(){
-                var that = this;
-				that.$http({
-					method:'get',
-					url:ROOT_API+'/user/logout',
-					emulateJSON:true
-				}).then(function(res){
-					if(!res.ok || res.body.retCode !== 0) {
-        				that.toast.toastText='退出失败';
-        				that.toast.toastShow = true;
-        				return;
-        			}
-        			that.userLogout()
-        			that.isShowAside=false
-				})
+                let that = this;
+    			that.userLogout().then(()=>{
+                    that.setToast='退出成功'
+                },res=>{
+                    that.setToast='退出失败'
+                }).catch(e=>{
+                    that.setToast ='退出失败'
+                })
+    			that.isShowAside=false
+				
         	}
         },
         ready(){

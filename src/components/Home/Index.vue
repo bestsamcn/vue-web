@@ -20,7 +20,6 @@
                 bannerList:({index})=>index.bannerList
             },
             actions:{
-                getBanner,
                 getBannerList
             }
         },

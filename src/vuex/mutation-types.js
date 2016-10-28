@@ -7,6 +7,7 @@
 
  //common
  export const SET_TOAST = 'SET_TOAST'
+ export const SET_LOADING = 'SET_LOADING'
 
 //shop
 export const CHANGE_PRIZE = 'CHANGE_PRIZE'
@@ -16,7 +17,10 @@ export const DEL_ITEM = 'DEL_ITEM'
 
 //user
 export const USER_LOGIN = 'USER_LOGIN'
+export const SET_USER_BASE ='SET_USER_BASE'
+export const SET_USER_INFO = 'SET_USER_INFO'
 export const USER_LOGOUT = 'USER_LOGOUT'
+
 
 //index
 export const GET_BANNER = 'GET_BANNER'
