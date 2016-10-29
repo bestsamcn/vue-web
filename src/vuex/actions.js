@@ -117,6 +117,31 @@ export const getCloudTagList = ({ dispatch },page,rows)=>{
     })
 }
 
+//获取最热
+export const getLiveVodList = ({ dispatch },page,rows,watchnum)=>{
+	let examList = [{"@id":1,"tempCreatedat":"2016-09-14","tempUpdatedat":null,"id":33,"title":"三万英尺波士顿大学白鸥创业挑战赛","description":"","listimg":"0iftb0inpjuh.jpg","livetime":1474416000000,"duration":3647,"watchnum":122023,"ordernum":0,"hostpeople":"Emma","categoryid":36,"seq":0,"itemid":7,"companyid":0,"lookid":0,"liveurl":"","status":2,"clicknum":122023,"videourl":"http://v.qq.com/x/cover/cu0y0xh094ya43g.html?vid=w01937y7vqa","freestatus":1,"price":0,"createdat":1473782400000,"templivetime":"2016-09-21 08:00","tempduration":"36:47","tagNames":"名校","tagIds":"1","categorypid":0,"lookName":null,"itemName":"对话世界名校","companyName":null,"categoryName":"对话世界名校","begintime":0,"endtime":0,"userId":0,"vodcode":"w01937y7vqa","tags":[{"tempCreatedat":null,"tempUpdatedat":null,"id":1,"name":"名校","description":"名校","createdat":-28800000,"type":0}],"livetags":"1","tagids":0,"item":null,"company":null,"look":null,"vodstatus":3,"discusstotal":18,"ifBook":false,"dealBeginTime":0,"idlist":[]}]
+    return api.getLiveVodList(page,rows,watchnum).then(res=>{
+    	if(res.ok && res.data.retCode === 0){
+            return dispatch(type.GET_LIVE_VOD_LIST,res.data.rows)
+    	}
+        dispatch(type.GET_LIVE_VOD_LIST,examList)
+    },res=>{
+        dispatch(type.GET_LIVE_VOD_LIST,examList)
+    })
+}
+
+//获取猜你喜欢
+export const getGuessLikeList = ({ dispatch },page,rows,watchnum)=>{
+	let examList = [{"@id":1,"tempCreatedat":null,"tempUpdatedat":null,"id":33,"title":"三万英尺波士顿大学白鸥创业挑战赛","description":"","listimg":"0iftb0inpjuh.jpg","livetime":1474416000000,"duration":3647,"watchnum":122023,"ordernum":0,"hostpeople":"Emma","categoryid":36,"seq":0,"itemid":7,"companyid":0,"lookid":0,"liveurl":"","status":2,"clicknum":122023,"videourl":"http://v.qq.com/x/cover/cu0y0xh094ya43g.html?vid=w01937y7vqa","freestatus":1,"price":0.0,"createdat":1473782400000,"templivetime":null,"tempduration":null,"tagNames":null,"tagIds":null,"categorypid":0,"lookName":null,"itemName":null,"companyName":null,"categoryName":null,"begintime":0,"endtime":0,"userId":0,"vodcode":"w01937y7vqa","tags":[{"tempCreatedat":null,"tempUpdatedat":null,"id":1,"name":"名校","description":"名校","createdat":-28800000,"type":0}],"livetags":"1","tagids":0,"item":null,"company":null,"look":null,"vodstatus":3,"discusstotal":0,"ifBook":false,"dealBeginTime":0,"idlist":[]}]
+    return api.getGuessLikeList().then(res=>{
+    	if(res.ok && res.data.retCode === 0){
+            return dispatch(type.GET_GUESS_LIKE_LIST,res.data.rows)
+    	}
+        dispatch(type.GET_GUESS_LIKE_LIST,examList)
+    },res=>{
+        dispatch(type.GET_GUESS_LIKE_LIST,examList)
+    })
+}
 
 
 

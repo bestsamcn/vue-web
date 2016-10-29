@@ -31,7 +31,9 @@ Vue.http.interceptors.push((request,next)=>{
 	next(response=>{
 		if(httpTimer){
 			clearTimeout(httpTimer)
-            common.state.isLoading = false
+			setTimeout(()=>{
+                common.state.isLoading = false
+			},500)
 		}
         common.state.isLoading = false
 	 	return response
@@ -47,5 +49,7 @@ export const setUserInfo = Vue.resource(ROOT_API+'/user/getById?id={id}')
 //首页
 export const getBannerList = Vue.resource(ROOT_API + '/banner/getListBanner?modelBanner={modelBanner}&seq={seq}&status={status}')
 export const getCloudTagList = Vue.resource(ROOT_API + '/tag/getListTag?page={page}&rows={rows}')
+export const getLiveVodList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&watchnum={watchnum}')
+export const getGuessLikeList = Vue.resource(ROOT_API + '/userAll/getGuessLike')
 
 

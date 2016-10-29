@@ -1,19 +1,23 @@
-<style src="../../assets/css/common/slider.css" scoped></style>
+<style src="../../../node_modules/owlcarousel/owl-carousel/owl.theme.css"></style>
+<style src="../../../node_modules/owlcarousel/owl-carousel/owl.carousel.css"></style>
+<style src="../../assets/css/common/slider.css"></style>
 <template>
-	<div class="owl-carousel" v-if="!!sliderBannerList.length" id="owlcarousel">
-        <div class="item" v-for="item in sliderBannerList">
-        	<img :src="BANNER_URL+item.banner">
-        </div>
-	</div>
+    <div class="cm-slider">
+    	<div class="owl-carousel" v-if="!!sliderList.length" id="{{sliderId}}">
+            <div class="item" v-for="item in sliderList">
+            	<img :src="POSTER_URL+item.listimg">
+            </div>
+    	</div>
+    </div>
 </template>
 <script>
     import { setCarousel } from '../../vuex/actions.js'
-    import { ROOT_API ,BANNER_URL } from '../../api/config.js'
+    import { POSTER_URL } from '../../api/config.js'
 	export default{
-        props:['sliderBannerList'],
+        props:['sliderList','sliderId'],
         data(){
             return{
-                BANNER_URL:BANNER_URL
+                POSTER_URL:POSTER_URL
             }
         }
 	}

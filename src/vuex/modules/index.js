@@ -1,8 +1,10 @@
-import { GET_BANNER_LIST,GET_CLOUD_TAG_LIST } from '../mutation-types.js'
+import { GET_BANNER_LIST, GET_CLOUD_TAG_LIST, GET_LIVE_VOD_LIST, GET_GUESS_LIKE_LIST } from '../mutation-types.js'
 
 const state = {
 	bannerList:[],
-	cloudTagList:[]
+	cloudTagList:[],
+	liveVodList:[],
+	guessLikeList:[]
 }
 
 const mutations = {
@@ -11,6 +13,12 @@ const mutations = {
 	},
 	[GET_CLOUD_TAG_LIST](state,cloudTagList){
 		state.cloudTagList = cloudTagList
+	},
+	[GET_LIVE_VOD_LIST](state,liveVodList){
+		state.liveVodList = liveVodList
+	},
+	[GET_GUESS_LIKE_LIST](state,guessLikeList){
+		state.guessLikeList = guessLikeList
 	}
 }
 

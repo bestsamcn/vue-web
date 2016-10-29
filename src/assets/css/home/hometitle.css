@@ -1,0 +1,26 @@
+.home-caption .main{
+	width:150px;
+	height:40px;
+	line-height: 40px;
+	position: relative;
+	text-align: center;
+	border:1px solid #0090ff;
+	color:#0090ff;
+	font-size: 14px;
+    margin:20px auto 10px auto;
+}
+.home-caption .main:before,.home-caption .main:after{
+	content:'';
+	position: absolute;
+	height:1px;
+	background: #0090ff;
+	width:50px;
+	top:50%;
+	display: block;
+}
+.home-caption .main:before{
+	left:-50px;
+}
+.home-caption .main:after{
+	right:-50px;
+}

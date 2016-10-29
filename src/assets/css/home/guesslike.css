@@ -1,0 +1,23 @@
+.guess-like{
+	padding:10px;
+}
+.guess-like .list{
+	width:100%;
+}
+.guess-like .list .item{
+	width:100%;
+    display: inline-block;
+    margin-bottom:10px;
+    vertical-align: top;
+    background:#fff;
+    border:1px solid #eee;
+}
+.guess-like .list .item img{
+	width:100%;
+}
+.guess-like .list .item h5{
+	text-align: left;
+	padding:20px 10px;
+	color:#333;
+	font-weight: 400
+}

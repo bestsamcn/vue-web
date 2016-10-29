@@ -1,0 +1,28 @@
+.owl-cover{
+  background:#eee;
+  width:100%;
+  height:200px;
+}
+.owl-cover .hide{
+  display: none;
+}
+.owl-carousel{
+	width:100%;
+  margin-bottom:16px;
+	max-height:150px;
+}
+.owl-carousel img{
+	width:100%;
+  height:200px;
+}
+.owl-theme .owl-controls{
+  margin-top:-24px;
+}
+.owl-theme .owl-controls .owl-page{
+  position: relative;
+}
+.owl-theme .owl-controls .owl-page span{
+  width:10px;
+  height:10px;
+  margin:0 5px;
+}

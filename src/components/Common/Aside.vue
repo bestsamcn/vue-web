@@ -77,7 +77,6 @@
                     that.setToast ='退出失败'
                 })
     			that.isShowAside=false
-				
         	}
         },
         ready(){
