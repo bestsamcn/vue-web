@@ -42,7 +42,7 @@ export const userLogin = ({ dispatch },data)=>{
 export const setUserBase = ({ dispatch })=>{
 	var promise = new Promise((resolve,reject)=>{
 		api.setUserBase().then(res=>{
-			if(res.ok &&　res.data.retCode === 0){
+			if(res.ok &&　res.data.retCode === 0 && res.data.data){
 				dispatch(type.SET_USER_BASE,res.data.data.uid)
 				return resolve(res.data.data.uid)
 			}
@@ -91,10 +91,10 @@ export const userLogout = ({ dispatch })=>{
 //首页——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 //获取banner
-export const getBannerList = ({ dispatch })=>{
+export const getBannerList = ({ dispatch },modleBanner,seq,status)=>{
 	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
 	//返回后可以作为链式调用
-    return api.getBannerList().then(res=>{
+    return api.getBannerList(modleBanner,seq,status).then(res=>{
     	if(res.ok && res.data.retCode ===0){
             return dispatch(type.GET_BANNER_LIST,res.data.rows)
     	}
@@ -131,7 +131,7 @@ export const getLiveVodList = ({ dispatch },page,rows,watchnum)=>{
 }
 
 //获取猜你喜欢
-export const getGuessLikeList = ({ dispatch },page,rows,watchnum)=>{
+export const getGuessLikeList = ({ dispatch })=>{
 	let examList = [{"@id":1,"tempCreatedat":null,"tempUpdatedat":null,"id":33,"title":"三万英尺波士顿大学白鸥创业挑战赛","description":"","listimg":"0iftb0inpjuh.jpg","livetime":1474416000000,"duration":3647,"watchnum":122023,"ordernum":0,"hostpeople":"Emma","categoryid":36,"seq":0,"itemid":7,"companyid":0,"lookid":0,"liveurl":"","status":2,"clicknum":122023,"videourl":"http://v.qq.com/x/cover/cu0y0xh094ya43g.html?vid=w01937y7vqa","freestatus":1,"price":0.0,"createdat":1473782400000,"templivetime":null,"tempduration":null,"tagNames":null,"tagIds":null,"categorypid":0,"lookName":null,"itemName":null,"companyName":null,"categoryName":null,"begintime":0,"endtime":0,"userId":0,"vodcode":"w01937y7vqa","tags":[{"tempCreatedat":null,"tempUpdatedat":null,"id":1,"name":"名校","description":"名校","createdat":-28800000,"type":0}],"livetags":"1","tagids":0,"item":null,"company":null,"look":null,"vodstatus":3,"discusstotal":0,"ifBook":false,"dealBeginTime":0,"idlist":[]}]
     return api.getGuessLikeList().then(res=>{
     	if(res.ok && res.data.retCode === 0){
@@ -143,6 +143,19 @@ export const getGuessLikeList = ({ dispatch },page,rows,watchnum)=>{
     })
 }
 
+//主播——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+export const getLiveBannerList = ({ dispatch })=>{
+	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
+	//返回后可以作为链式调用
+    return api.getBannerList().then(res=>{
+    	if(res.ok && res.data.retCode ===0){
+            return dispatch(type.GET_BANNER_LIST,res.data.rows)
+    	}
+        dispatch(type.GET_BANNER_LIST,examList)
+    },res=>{
+        dispatch(type.GET_BANNER_LIST,examList)
+    })
+}
 
 
 function makeActions(type){

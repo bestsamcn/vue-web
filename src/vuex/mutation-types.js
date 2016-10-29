@@ -32,4 +32,8 @@ export const GET_GUESS_LIKE_LIST = 'GET_GUESS_LIKE_LIST'
 export const SET_ASIDE = 'SET_ASIDE'
 export const SET_ASIDE_STATE = 'SET_ASIDE_STATE'
 
+//live
+export const GET_LIVE_BANNER_LIST = 'GET_LIVE_BANNER_LIST'
+export const GET_LIVE_VIDEO_LIST = 'GET_LIVE_VIDEO_LIST'
+
 

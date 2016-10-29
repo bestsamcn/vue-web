@@ -13,12 +13,14 @@ import index from './modules/index.js'
 import shop from './modules/shop.js'
 import sign from './modules/sign.js'
 import common from './modules/common.js'
+import live from './modules/live'
 
 export default new Vuex.Store({
 	modules:{
 		shop,
         sign,
         common,
-        index
+        index,
+        live
 	}
 })

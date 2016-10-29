@@ -13,6 +13,6 @@ export default{
 	setUserBase:()=>setUserBase.get(),
 	setUserInfo:(id)=>setUserInfo.get({id:id}),
 	getCloudTagList:(page,rows)=>getCloudTagList.get({page:'1',rows:'20'}),
-	getLiveVodList:(page,rows,watchnum)=>getLiveVodList.get({page:page, rows:rows, watchnum:watchnum}),
+	getLiveVodList:(page,rows,watchnum,status,tagids)=>getLiveVodList.get({page:page, rows:rows, watchnum:watchnum,status:status,tagids:tagids}),
 	getGuessLikeList:()=>getGuessLikeList.get()
 }

@@ -52,4 +52,9 @@ export const getCloudTagList = Vue.resource(ROOT_API + '/tag/getListTag?page={pa
 export const getLiveVodList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&watchnum={watchnum}')
 export const getGuessLikeList = Vue.resource(ROOT_API + '/userAll/getGuessLike')
 
+//主播
+export const getLiveVideoList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&seq={seq}&status={status}&livetime={livetime}&order={order}&tagids={tagids}')
+
+
+
 
