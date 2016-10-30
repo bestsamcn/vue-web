@@ -3,11 +3,11 @@
     <div class="router-view" transition="outLeftInRight">
         <Banner :slider-banner-list="bannerList" :carousel-id="idGroup.id1"></Banner>
         <Cloudtag :cloud-tag-list="cloudTagList"></Cloudtag>
-        <Hometitle :caption="titleGroup.title1"></Hometitle>
+        <Hometitle v-if="isAllReady" :caption="titleGroup.title1"></Hometitle>
         <Slider :slider-list="liveVodList" :slider-id="idGroup.id2"></Slider>
-        <Hometitle :caption="titleGroup.title2"></Hometitle>
+        <Hometitle v-if="isAllReady" :caption="titleGroup.title2"></Hometitle>
         <Guesslike :guess-like-list="guessLikeList"></Guesslike>
-        <Foot></Foot>
+        <Foot v-if="isAllReady"></Foot>
     </div>
 </template>
 
@@ -30,7 +30,13 @@
                 titleGroup:{
                     title1:'最热',
                     title2:'猜你喜欢'
-                }
+                },
+                vodParams:{
+                   page:1,
+                   rows:4,
+                   watchnum:1
+                },
+                isAllReady:false
             }
         },
         components:{
@@ -44,6 +50,7 @@
         vuex:{
             getters:{
                 bannerList:({index})=>index.bannerList,
+                bannerParams:({ index })=>index.bannerParams,
                 cloudTagList:({index})=>index.cloudTagList,
                 liveVodList:({index})=>index.liveVodList,
                 guessLikeList:({index})=>index.guessLikeList
@@ -102,16 +109,16 @@
         },
         created(){
             this.$nextTick(()=>{
-                var p1 = new Promise((resolve,reject)=>{
+                let p1 = new Promise((resolve,reject)=>{
                     if(this.bannerList.length<1){
-                        this.getBannerList().then(()=>{
+                        this.getBannerList(this.bannerParams).then(()=>{
                             return resolve()
                         })
                     }else{
                         return resolve()
                     }
                 })
-                var p2 = new Promise((resolve,reject)=>{
+                let p2 = new Promise((resolve,reject)=>{
                     if(this.cloudTagList.length<1){
                         this.getCloudTagList().then(()=>{
                             return resolve()
@@ -120,16 +127,16 @@
                         return resolve()
                     }
                 })
-                var p3 = new Promise((resolve,reject)=>{
+                let p3 = new Promise((resolve,reject)=>{
                     if(this.liveVodList.length<1){
-                        this.getLiveVodList(1,4,1).then(()=>{
+                        this.getLiveVodList(this.vodParams).then(()=>{
                             return resolve()
                         })
                     }else{
                         return resolve()
                     }
                 })
-                var p4 = new Promise((resolve,reject)=>{
+                let p4 = new Promise((resolve,reject)=>{
                     if(this.guessLikeList.length<1){
                         this.getGuessLikeList().then(()=>{
                             return resolve()
@@ -142,12 +149,14 @@
                     this.setCarousel(this.idGroup.id1)
                     this.setCloudTag()
                     this.setSlider(this.idGroup.id2)
+                    this.isAllReady = true
                 })
                 
             })
         },
         route:{
             data(transition){
+
             }
         }
     }

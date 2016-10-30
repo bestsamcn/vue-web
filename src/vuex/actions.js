@@ -91,10 +91,10 @@ export const userLogout = ({ dispatch })=>{
 //首页——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 //获取banner
-export const getBannerList = ({ dispatch },modleBanner,seq,status)=>{
+export const getBannerList = ({ dispatch },bannerParams)=>{
 	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
 	//返回后可以作为链式调用
-    return api.getBannerList(modleBanner,seq,status).then(res=>{
+    return api.getBannerList(bannerParams).then(res=>{
     	if(res.ok && res.data.retCode ===0){
             return dispatch(type.GET_BANNER_LIST,res.data.rows)
     	}
@@ -118,9 +118,9 @@ export const getCloudTagList = ({ dispatch },page,rows)=>{
 }
 
 //获取最热
-export const getLiveVodList = ({ dispatch },page,rows,watchnum)=>{
+export const getLiveVodList = ({ dispatch },listParams)=>{
 	let examList = [{"@id":1,"tempCreatedat":"2016-09-14","tempUpdatedat":null,"id":33,"title":"三万英尺波士顿大学白鸥创业挑战赛","description":"","listimg":"0iftb0inpjuh.jpg","livetime":1474416000000,"duration":3647,"watchnum":122023,"ordernum":0,"hostpeople":"Emma","categoryid":36,"seq":0,"itemid":7,"companyid":0,"lookid":0,"liveurl":"","status":2,"clicknum":122023,"videourl":"http://v.qq.com/x/cover/cu0y0xh094ya43g.html?vid=w01937y7vqa","freestatus":1,"price":0,"createdat":1473782400000,"templivetime":"2016-09-21 08:00","tempduration":"36:47","tagNames":"名校","tagIds":"1","categorypid":0,"lookName":null,"itemName":"对话世界名校","companyName":null,"categoryName":"对话世界名校","begintime":0,"endtime":0,"userId":0,"vodcode":"w01937y7vqa","tags":[{"tempCreatedat":null,"tempUpdatedat":null,"id":1,"name":"名校","description":"名校","createdat":-28800000,"type":0}],"livetags":"1","tagids":0,"item":null,"company":null,"look":null,"vodstatus":3,"discusstotal":18,"ifBook":false,"dealBeginTime":0,"idlist":[]}]
-    return api.getLiveVodList(page,rows,watchnum).then(res=>{
+    return api.getLiveVodList(listParams).then(res=>{
     	if(res.ok && res.data.retCode === 0){
             return dispatch(type.GET_LIVE_VOD_LIST,res.data.rows)
     	}
@@ -144,17 +144,37 @@ export const getGuessLikeList = ({ dispatch })=>{
 }
 
 //主播——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-export const getLiveBannerList = ({ dispatch })=>{
+//获取banner列表
+export const getLiveBannerList = ({ dispatch },bannerParams)=>{
 	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
 	//返回后可以作为链式调用
-    return api.getBannerList().then(res=>{
+    return api.getBannerList(bannerParams).then(res=>{
     	if(res.ok && res.data.retCode ===0){
-            return dispatch(type.GET_BANNER_LIST,res.data.rows)
+            return dispatch(type.GET_LIVE_BANNER_LIST,res.data.rows)
     	}
-        dispatch(type.GET_BANNER_LIST,examList)
+        dispatch(type.GET_LIVE_BANNER_LIST,examList)
     },res=>{
-        dispatch(type.GET_BANNER_LIST,examList)
+        dispatch(type.GET_LIVE_BANNER_LIST,examList)
     })
+}
+//获取直播列表
+export const getLiveVideoList = ({ dispatch },videoParams)=>{
+	let examList = [{"@id":1,"tempCreatedat":"2016-10-26","tempUpdatedat":null,"id":139,"title":"Selfridges奢侈品牌看看看","description":"","listimg":"1hut3lebd3u0.jpg","livetime":1477731600000,"duration":6000,"watchnum":0,"ordernum":0,"hostpeople":"Summer","categoryid":58,"seq":99,"itemid":13,"companyid":0,"lookid":0,"liveurl":"","status":1,"clicknum":0,"videourl":"","freestatus":1,"price":0.0,"createdat":1477411200000,"templivetime":"2016-10-29 17:00","tempduration":"60:00","tagNames":"人物","tagIds":"2","categorypid":0,"lookName":null,"itemName":"网红","companyName":null,"categoryName":"我型我秀","begintime":0,"endtime":0,"userId":0,"vodcode":"6007","tags":[{"tempCreatedat":null,"tempUpdatedat":null,"id":2,"name":"人物","description":"人物","createdat":-28800000,"type":0}],"livetags":"2","tagids":0,"item":null,"company":null,"look":null,"vodstatus":2,"discusstotal":0,"ifBook":false,"dealBeginTime":0,"idlist":[]}]
+	//返回后可以作为链式调用
+	let promise = new Promise((resolve,reject)=>{
+	    api.getVideoList(videoParams).then(res=>{
+	    	if(res.ok && res.data.retCode ===0){
+	    		resolve(res.data)
+	            return dispatch(type.GET_LIVE_VIDEO_LIST,res.data.rows)
+	    	}
+	    	resolve(res.data)
+	    },res=>{
+	        dispatch(type.GET_LIVE_VIDEO_LIST,examList)
+	        reject()
+	    })
+    })
+    return promise
+
 }
 
 

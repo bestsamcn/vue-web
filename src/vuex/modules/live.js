@@ -2,16 +2,13 @@ import { GET_LIVE_BANNER_LIST, GET_LIVE_VIDEO_LIST } from '../mutation-types.js'
 
 const state = {
 	liveBannerList:[],
-	liveVideoList:[],
-	params:{
-		page:1,
-		rows:10,
-		watchnum:1,
-		status:1,
-		livetime:1,
-		seq:1,
-		tagids:''
-	}
+    bannerParams:{
+        modelBanner:2,
+        seq:1,
+        status:10
+    },
+	liveVideoList:[]
+	
 }
 
 const mutations = {
@@ -19,7 +16,11 @@ const mutations = {
 		state.liveBannerList = liveBannerList
 	},
 	[GET_LIVE_VIDEO_LIST](state,liveVideoList){
-        state.liveVideoList = liveVideoList
+		if(state.liveVideoList.length<1){
+            state.liveVideoList = liveVideoList
+		}else{
+            state.liveVideoList = state.liveVideoList.concat(liveVideoList)
+		}
 	}
 }
 export default{

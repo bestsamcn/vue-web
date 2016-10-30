@@ -33,6 +33,7 @@ const mutations ={
     	state.userInfo.headimg = userInfo.headimg
     	state.userInfo.id = userInfo.id
     },
+    //退出
 	[USER_LOGOUT](state){
 		state.userToken = ''
     	state.userInfo.account = ''

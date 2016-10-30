@@ -53,7 +53,7 @@ export const getLiveVodList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?p
 export const getGuessLikeList = Vue.resource(ROOT_API + '/userAll/getGuessLike')
 
 //主播
-export const getLiveVideoList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&seq={seq}&status={status}&livetime={livetime}&order={order}&tagids={tagids}')
+export const getVideoList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&seq={seq}&status={status}&livetime={livetime}&order={order}&tagids={tagids}')
 
 
 

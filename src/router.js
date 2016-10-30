@@ -9,11 +9,16 @@ import Shop from './components/Shop/Index.vue'
 import Shopcount from './components/Shop/Count.vue'
 import Sign from './components/Sign/Index.vue'
 import Signup from './components/Sign/Signup.vue'
+import Live from './components/Live/Index.vue'
 export default router => {
     router.map({
         '/home': {
             name:'home',
             component: Home
+        },
+        '/live':{
+            name:'live',
+            component:Live
         },
         '/shop': {
             name:'shop',
@@ -21,6 +26,10 @@ export default router => {
                 template:'<router-view></router-view>'
             },
             subRoutes:{
+                '/':{
+                    name:'shop',
+                    component:Shop
+                },
                 '/cart':{
                     name:'cart',
                     component:Shop

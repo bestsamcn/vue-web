@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
+import filter from './filter.js'
 import $ from 'jquery'
 import '../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
 import './assets/js/tagcanvas.js'
@@ -10,10 +11,11 @@ import './assets/js/tagcanvas.js'
 
 import App from './App.vue'
 import routerMap from './router.js'
-
+Vue.use(filter)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
+
 
 
 

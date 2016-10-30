@@ -9,8 +9,7 @@
 	</div>
 </template>
 <script>
-    import { setCarousel } from '../../vuex/actions.js'
-    import { ROOT_API ,BANNER_URL } from '../../api/config.js'
+    import { BANNER_URL } from '../../api/config.js'
 	export default{
         props:['sliderBannerList','carouselId'],
         data(){

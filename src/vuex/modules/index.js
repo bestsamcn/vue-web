@@ -4,7 +4,8 @@ const state = {
 	bannerList:[],
 	cloudTagList:[],
 	liveVodList:[],
-	guessLikeList:[]
+	guessLikeList:[],
+	bannerParams:{modelBanner:1,seq:1,status:10}
 }
 
 const mutations = {
