@@ -40,6 +40,7 @@
 			</div>
 			<div class="get-it">
 				<a href="javascript:;" :class="{active:iphone6s.isSelected}" @click="iphone6s.isSelected ? addItem() :''" >加入购物车</a>
+				<a v-link="{path:'/shop/count'}" class="my-cart">我的购物车</a>
 			</div>
 		</div>
 		

@@ -81,12 +81,18 @@
 	}
 	.cart .product-detail .get-it a{
 	    height:40px;
-	    width:60%;
+	    width:40%;
         line-height: 40px;
         text-align: center;
         color:#fff;
         background: #ccc;
-        display: block;	
+        display: inline-block;	
+	}
+	.cart .product-detail .my-cart{
+		height:40px;
+		background:#0090ff !important;
+		color:#fff;
+        display: inline-block;	
 	}
 	.cart .product-detail .get-it a.active{
 		background:#0090ff;
