@@ -1,4 +1,4 @@
-import { SET_ASIDE, SET_ASIDE_STATE, SET_TOAST, SET_LOADING } from '../mutation-types.js'
+import { SET_ASIDE, SET_ASIDE_STATE, SET_TOAST, SET_LOADING, GET_ALL_TAG_LIST } from '../mutation-types.js'
 
 const state ={
 	isShowAside:false,
@@ -7,7 +7,8 @@ const state ={
 		isShow:false,
 		text:''
 	},
-	isLoading:false
+	isLoading:false,
+	allTagList:[]
 }
 
 const mutations = {
@@ -23,6 +24,9 @@ const mutations = {
 	},
 	[SET_LOADING](state,isLoading){
 		state.isLoading = isLoading
+	},
+	[GET_ALL_TAG_LIST](state,allTagList){
+        state.allTagList = allTagList
 	}
 }
 export default{

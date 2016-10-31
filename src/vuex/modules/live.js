@@ -1,4 +1,4 @@
-import { GET_LIVE_BANNER_LIST, GET_LIVE_VIDEO_LIST } from '../mutation-types.js'
+import { GET_LIVE_BANNER_LIST, GET_LIVE_VIDEO_LIST, REFRESH_LIVE_VIDEO_LIST } from '../mutation-types.js'
 
 const state = {
 	liveBannerList:[],
@@ -21,6 +21,9 @@ const mutations = {
 		}else{
             state.liveVideoList = state.liveVideoList.concat(liveVideoList)
 		}
+	},
+	[REFRESH_LIVE_VIDEO_LIST](state,liveVideoList){
+        state.liveVideoList = liveVideoList
 	}
 }
 export default{

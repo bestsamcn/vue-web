@@ -4,6 +4,9 @@ html,body{
 	overflow-x: hidden;
   background:#f6f7fb
 }
+h1,h2,h3,h4,h5,h6{
+  font-weight: 400
+}
 ul,li{
 	list-style:none;
 }
@@ -26,7 +29,7 @@ ul,img{
   opacity: 1;
   z-index: 2;
   position: relative;
-  transition: all .3s ease-in-out;
+  transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
 }
 /* 进入时的状态，从右开始 */
 .outLeftInRight-enter,
@@ -62,4 +65,69 @@ ul,img{
 }
 .mask-enter,.mask-leave{
   background:rgba(0,0,0,0)
+}
+@-webkit-keyframes fadeIn {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+@keyframes fadeIn {
+from {
+    opacity: 0;
+}
+to {
+    opacity: 1;
+}
+}
+img[lazy=loaded] {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+img[lazy=loading] {
+  width: 40px !important;
+  height:40px !important;
+  position: absolute;
+  left:50%;
+  top:50%;
+  margin-left:-20px;
+  margin-top:-20px;
+}
+img[lazy=error] {
+  border-radius: 2px;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+.bg-box {
+  height: 0;
+  background-size: cover;
+  padding-bottom: 55%;
+}
+.bg-box[lazy=loading] {
+  background-size: 10%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: #f1f1f1;
+}
+.bg-box[lazy=error]{
+  background-position:center
+}
+.bg-box[lazy=loaded] {
+  background-size: cover;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
 }

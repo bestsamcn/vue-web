@@ -14,21 +14,23 @@ import {
 	getCloudTagList,
 	getLiveVodList,
 	getGuessLikeList,
-	getVideoList
+	getVideoList,
+	getAllTagList
 } from './resource.js'
 export default {
-	getBannerList: (data) => getBannerList.get(data),
+	//用户
 	userLogin: (data) => userLogin.save(data),
 	userLogout: () => userLogout.delete(),
 	setUserBase: () => setUserBase.get(),
-	setUserInfo: (id) => setUserInfo.get({
-		id: id
-	}),
-	getCloudTagList: (page, rows) => getCloudTagList.get({
-		page: 1,
-		rows: 20
-	}),
+	setUserInfo: (id) => setUserInfo.get({id: id}),
+
+	//公共
+	getBannerList: (data) => getBannerList.get(data),
+	getVideoList: (videoParams) => getVideoList.get(videoParams),
+    getAllTagList:()=>getAllTagList.get(),
+    
+    //首页
+	getCloudTagList: (page, rows) => getCloudTagList.get({page: 1,rows: 20}),
 	getLiveVodList: (liveParams) => getLiveVodList.get(liveParams),
-	getGuessLikeList: () => getGuessLikeList.get(),
-	getVideoList: (videoParams) => getVideoList.get(videoParams)
+	getGuessLikeList: () => getGuessLikeList.get()
 }

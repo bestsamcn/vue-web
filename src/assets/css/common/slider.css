@@ -2,8 +2,19 @@
 	padding:10px;
 }
 .owl-carousel{
-	max-height:500px;
+	max-height:250px;
 }
 .owl-theme .owl-controls{
 	margin-top:10px;
+}
+.owl-theme .owl-controls .owl-page{
+	width:10px;
+	height:10px;
+}
+.owl-theme .owl-controls .owl-page span{
+	width:10px;
+	height:10px;
+}
+.owl-carousel img{
+	width:100%
 }

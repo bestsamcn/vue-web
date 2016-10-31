@@ -1,8 +1,8 @@
-<style src="../../assets/css/common/videolist.css"></style>
+<style src="../../assets/css/common/videolist.css" scoped></style>
 <template>
 	<div class="video-list" v-if="!!videoList.length">
 		<div class="list-item" v-for="item in videoList">
-			<img class="item-img" :src="POSTER_URL+item.listimg" alt="">
+			<div class="bg-box item-img" v-lazy:background-image="POSTER_URL+item.listimg"></div>
 			<div class="item-cont">
 				<p class="cont-tit">{{item.title}}</p>
 				<div class="cont-other">

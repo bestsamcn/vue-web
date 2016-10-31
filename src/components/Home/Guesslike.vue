@@ -3,7 +3,8 @@
 	<div class="guess-like" v-if="!!guessLikeList.length">
 		<ul class="list">
 			<li class="item" v-for="item in guessLikeList "  track-by="$index">
-				<img :src="POSTER_URL+item.listimg" alt="{{item.title}}">
+			    <div class="bg-box" v-lazy:background-image="POSTER_URL+item.listimg"></div>
+				<!-- <img class="fade-img" v-lazy.container="POSTER_URL+item.listimg" alt="{{item.title}}"> -->
 				<h5>{{item.title}}</h5>
 			</li>
 		</ul>

@@ -20,7 +20,7 @@ import Loading  from './components/common/Loading.vue'
 
 //vuex
 import store from './vuex/store.js'
-import { setUserBase, setUserInfo, userLogout,setLoading } from './vuex/actions.js'
+import { setUserBase, setUserInfo, userLogout, setLoading, getAllTagList } from './vuex/actions.js'
 
 //css/js
 import '../node_modules/font-awesome/css/font-awesome.min.css'
@@ -42,13 +42,16 @@ export default {
             setUserBase,
             setUserInfo,
             userLogout,
-            setLoading
+            setLoading,
+            getAllTagList
+
         },
         getters:{
             userToken:({ sign })=>sign.userToken,
             userInfo:({ sign })=>sign.userInfo,
             toast:({ common })=>common.toast,
-            isLoading:({ common })=>common.isLoading
+            isLoading:({ common })=>common.isLoading,
+            allTagList:({ common })=>common.allTagList
         }
     },
     replace:false,
@@ -63,6 +66,12 @@ export default {
             this.setUserInfo(res)
         },res=>{
             // this.userLogout()
+        })
+        this.$nextTick(()=>{
+            if(this.allTagList.length<1){
+                this.getAllTagList().catch(err=>{
+                })
+            }
         })
     },
     ready(){

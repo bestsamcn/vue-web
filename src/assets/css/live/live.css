@@ -1,15 +1,3 @@
-.more-video{
-	width:100%;
-	margin-top:10px;
-	padding:10px;
-}
-.more-video a{
-	border:1px solid #0090ff;
-	color:#0090ff;
-	display: block;
-	width:100%;
-	height:30px;
-	line-height: 30px;
-	text-align: center;
-	font-size: 12px;
+.owl-theme .owl-controls{
+	margin-top:-35px;
 }
