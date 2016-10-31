@@ -11,7 +11,7 @@
 		<div class="aside-content" :class="routeName">
 			<a id="home" @click="goUrl('home')" class="fa fa-home fa-fw" :class="{}">首页</a>
             <a id="live" @click="goUrl('live')" class="fa fa-file-movie-o fa-fw">主播</a>
-            <a id="shop" @click="goUrl('shop')" class="fa fa-film fa-fw">购物车</a>
+            <a id="shop" @click="goUrl('shop')" class="fa fa-film fa-fw">商店</a>
 			<a id="about" class="fa fa-address-book-o fa-fw">关于</a>
 		</div>
 		<div class="aside-footer">

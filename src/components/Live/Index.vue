@@ -84,7 +84,7 @@
                     }else{
                         this.isMore = true
                     }
-                })
+                }).catch(e=>{})
             }
         },
         watch:{
