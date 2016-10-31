@@ -5,6 +5,8 @@
     background: #fff;
     border-bottom: 1px solid #eee;
     margin-top:10px;
+    display: block;
+    width:100%;
 }
 .video-list .list-item .item-img{
 	width:100%;

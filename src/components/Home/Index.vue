@@ -1,6 +1,6 @@
 <style src="../../assets/css/home/home.css"></style>
 <template>
-    <div class="router-view" transition="outLeftInRight">
+    <div class="router-view" transition="outLeftInRight" transition-mode="in">
         <Banner :slider-banner-list="bannerList" :carousel-id="idGroup.id1"></Banner>
         <Cloudtag :cloud-tag-list="cloudTagList"></Cloudtag>
         <Hometitle v-if="isAllReady" :caption="titleGroup.title1"></Hometitle>

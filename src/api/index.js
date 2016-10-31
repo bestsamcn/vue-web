@@ -32,5 +32,8 @@ export default {
     //首页
 	getCloudTagList: (page, rows) => getCloudTagList.get({page: 1,rows: 20}),
 	getLiveVodList: (liveParams) => getLiveVodList.get(liveParams),
-	getGuessLikeList: () => getGuessLikeList.get()
+	getGuessLikeList: () => getGuessLikeList.get(),
+
+	//直播
+	getLiveDetail:(id)=>getLiveDetail.get(id)
 }
