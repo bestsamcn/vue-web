@@ -16,6 +16,7 @@
 <script>
     import { POSTER_URL } from '../../api/config.js'
 	export default{
+		name:'videolist',
         props:['videoList'],
         data(){
         	return {

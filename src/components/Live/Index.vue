@@ -18,6 +18,7 @@
     import Videotag from './Videotag.vue'
     import { getLiveBannerList, getLiveVideoList, refreshLiveVideoList } from '../../vuex/actions.js'
 	export default{
+        name:'live',
 		data(){
 			return{
 				idGroup:{

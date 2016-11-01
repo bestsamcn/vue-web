@@ -49,7 +49,7 @@
 <script>
     import {changePrize,changeStyle,addItem} from '../../vuex/actions.js'
 	export default{
-        name:'cart',
+        name:'shop',
         data(){
         	return{
         		activeStyle:'',

@@ -11,6 +11,7 @@
 <script>
     import { BANNER_URL } from '../../api/config.js'
 	export default{
+        name:'banner',
         props:['sliderBannerList','carouselId'],
         data(){
             return{

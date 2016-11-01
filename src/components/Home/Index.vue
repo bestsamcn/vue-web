@@ -21,6 +21,7 @@
     import Foot  from '../common/Foot.vue'
 
     export default {
+        name:'home',
         data(){
             return{
                 idGroup:{

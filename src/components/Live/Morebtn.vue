@@ -6,6 +6,7 @@
 </template>
 <script>
 	export default{
+        name:'morebtn',
         props:{
             currentPage:{
             	type:Number,

@@ -7,6 +7,7 @@
 </template>
 <script>
 	export default{
+		name:'loading',
 		props:{
 			isLoading:{
 				type:Boolean,

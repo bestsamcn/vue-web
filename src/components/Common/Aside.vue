@@ -11,6 +11,7 @@
 		<div class="aside-content" :class="routeName">
 			<a id="home" @click="goUrl('home')" class="fa fa-home fa-fw" :class="{}">首页</a>
             <a id="live" @click="goUrl('live')" class="fa fa-file-movie-o fa-fw">主播</a>
+            <a id="video" @click="goUrl('video')" class="fa fa-file-movie-o fa-fw">视频</a>
             <a id="shop" @click="goUrl('shop')" class="fa fa-film fa-fw">商店</a>
 			<a id="about" class="fa fa-address-book-o fa-fw">关于</a>
 		</div>
@@ -25,6 +26,7 @@
     import { userLogout,setAsideState, setToast } from '../../vuex/actions.js'
     import { IMG_URL,ROOT_API } from '../../api/config.js'
 	export default{
+        name:'aside',
 		components:{
 		},
         props:{

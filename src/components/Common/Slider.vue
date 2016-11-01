@@ -20,6 +20,7 @@
     import { setCarousel } from '../../vuex/actions.js'
     import { POSTER_URL } from '../../api/config.js'
 	export default{
+        name:'slider',
         props:['sliderList','sliderId'],
         data(){
             return{

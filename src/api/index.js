@@ -36,5 +36,7 @@ export default {
 	getGuessLikeList: () => getGuessLikeList.get(),
 
 	//直播
-	getLiveDetail:(id)=>getLiveDetail.get(id)
+	getLiveDetail:(id)=>getLiveDetail.get(id),
+
+	//视频
 }

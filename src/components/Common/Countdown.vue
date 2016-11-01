@@ -9,6 +9,7 @@
 </template>
 <script>
 	export default{
+		name:'countdown',
 		props:{
 			temptime:{
 				type:Number,

@@ -223,6 +223,20 @@ export const getLiveDetail = ({ dispath },id)=>{
 	return promise
 }
 
+//点播——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+export const getVideoBannerList = ({ dispatch },bannerParams)=>{
+	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
+	//返回后可以作为链式调用
+    return api.getBannerList(bannerParams).then(res=>{
+    	if(res.ok && res.data.retCode ===0 && !!res.data.rows.length){
+            return dispatch(type.GET_VIDEO_BANNER_LIST,res.data.rows)
+    	}
+        dispatch(type.GET_VIDEO_BANNER_LIST,examList)
+    },res=>{
+        dispatch(type.GET_VIDEO_BANNER_LIST,examList)
+    })
+}
+
 
 function makeActions(type){
 	//3个点不能少

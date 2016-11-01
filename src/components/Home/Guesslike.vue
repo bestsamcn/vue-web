@@ -13,6 +13,7 @@
 <script>
     import { POSTER_URL } from '../../api/config.js'
 	export default{
+		name:'guesslike',
 		props:['guessLikeList'],
 		data(){
 			return{

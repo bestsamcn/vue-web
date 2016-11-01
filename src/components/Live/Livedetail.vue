@@ -17,6 +17,7 @@
     import Countdown from '../common/Countdown.vue'
     import { getLiveDetail } from '../../vuex/actions.js'
 	export default{
+		name:'livedetail',
 		data(){
 			return {
                 liveDetail:{

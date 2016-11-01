@@ -9,8 +9,9 @@ import Shop from './components/Shop/Index.vue'
 import Shopcount from './components/Shop/Count.vue'
 import Sign from './components/Sign/Index.vue'
 import Signup from './components/Sign/Signup.vue'
-import Live from './components/Live/Index.vue'
+import Liveindex from './components/Live/Index.vue'
 import Livedetail from './components/Live/Livedetail.vue'
+import Videoindex from './components/Video/Index.vue'
 export default router => {
     router.map({
         '/home': {
@@ -28,10 +29,29 @@ export default router => {
                 '/':{
                     name:'live',
                     title:'直播',
-                    component:Live 
+                    component:Liveindex 
                 },
                 '/livedetail/:id':{
-                    name:'Livedetail',
+                    name:'liveDetail',
+                    title:'直播间',
+                    component:Livedetail 
+                }
+            }
+        },
+        '/video':{
+            name:'video',
+            title:'视频',
+            component:{
+                template:'<router-view></router-view>'
+            },
+            subRoutes:{
+                '/':{
+                    name:'video',
+                    title:'视频',
+                    component:Videoindex 
+                },
+                '/videodetail/:id':{
+                    name:'videoDetail',
                     title:'直播间',
                     component:Livedetail 
                 }
@@ -83,6 +103,7 @@ export default router => {
         }
     });
     router.redirect({
+        '/live/livedetail':'/live/livedetail/1',
         '*': '/home'
     })
     router.afterEach((transition)=>{

@@ -13,6 +13,7 @@
 </template>
 <script>
 	export default{
+        name:'videotag',
         props:['allTagList','hasChooseTags'],
         data(){
         	return {
