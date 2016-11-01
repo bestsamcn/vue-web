@@ -1,7 +1,7 @@
 <style src="../../assets/css/home/home.css"></style>
 <template>
     <div class="router-view" transition="outLeftInRight" transition-mode="in">
-        <Banner :slider-banner-list="bannerList" :carousel-id="idGroup.id1"></Banner>
+        <Indexbanner :slider-banner-list="bannerList" :carousel-id="idGroup.id1"></Indexbanner>
         <Cloudtag :cloud-tag-list="cloudTagList"></Cloudtag>
         <Hometitle v-if="isAllReady" :caption="titleGroup.title1"></Hometitle>
         <Slider :slider-list="liveVodList" :slider-id="idGroup.id2"></Slider>
@@ -13,7 +13,7 @@
 
 <script>
     import { getBanner, getBannerList, getCloudTagList, setLoading, getLiveVodList, getGuessLikeList } from '../../vuex/actions.js'
-    import Banner from '../common/Banner.vue'
+    import Indexbanner from '../common/Banner.vue'
     import Cloudtag  from './Cloudtag.vue'
     import Slider from '../common/Slider.vue'
     import Hometitle from './Hometitle.vue'
@@ -41,7 +41,7 @@
             }
         },
         components:{
-            Banner,
+            Indexbanner,
             Cloudtag,
             Slider,
             Hometitle,

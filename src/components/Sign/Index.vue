@@ -53,7 +53,8 @@
                 setAsideState
 			},
 			getters:{
-				userInfo:({sign})=>sign.userInfo
+				userInfo:({sign})=>sign.userInfo,
+				userToken:({ sign })=>sign.userToken
 			}
 		},
 		methods:{
@@ -81,9 +82,9 @@
             }
 		},
 		route: {
-	    	activate:function (transition) {
+	    	data:function (transition) {
 	    		
-	            this.userInfo.uid ? transition.redirect('/') : transition.next()
+	            !!this.userToken ? transition.redirect('/home') : transition.next()
     		}
     	}
 	}

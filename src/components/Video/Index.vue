@@ -5,7 +5,7 @@
 	</div>
 </template>
 <script>
-    import Videobanner from '../Common/Banner.vue'
+    import Videobanner from '../common/Banner.vue'
     import { getVideoBannerList } from '../../vuex/actions.js'
 	export default{
 		name:'video',
