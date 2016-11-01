@@ -26,7 +26,7 @@ ul,img{
   opacity: 1;
   z-index: 2;
   position: relative;
-  transition: all .3s ease-in-out;
+  transition: all cubic-bezier(0.36, 0.66, 0.04, 1) 500ms;
 }
 /* 进入时的状态，从右开始 */
 .outLeftInRight-enter,
