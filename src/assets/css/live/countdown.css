@@ -1,0 +1,15 @@
+.count-down{
+	width:100%;
+	margin:10px auto;
+}
+.count-down .show-time{
+	padding:10px;
+	color:#333;
+	font-size: 14px;
+	text-align: center;
+}
+.count-down .show-time span{
+	color:#ffc600;
+	font-size: 18px;
+	margin:0 5px;
+}

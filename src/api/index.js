@@ -15,7 +15,8 @@ import {
 	getLiveVodList,
 	getGuessLikeList,
 	getVideoList,
-	getAllTagList
+	getAllTagList,
+    getLiveDetail
 } from './resource.js'
 export default {
 	//用户

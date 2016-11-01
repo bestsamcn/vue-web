@@ -1,0 +1,56 @@
+.live-detail{
+	width:100%;
+}
+.live-detail .wrapper{
+	padding:10px;
+}
+.live-detail .wrapper .info-box{
+	background:#fff;
+	padding:10px;
+	position: relative;
+	overflow:hidden;
+}
+.live-detail .wrapper .info-box .live-status{
+    position: absolute;
+    left: -20px;
+    top: 9px;
+    padding: 4px 20px;
+    background: #ddd;
+    transform: rotate(-45deg);
+    font-size: 10px;
+    color: #fff;
+}
+.live-detail .wrapper .info-box .live-status.book{
+	background:#ffc600;
+}
+.live-detail .wrapper .info-box .live-status.live{
+	background:#0090ff;
+}
+.live-detail .wrapper .info-box .live-status.over{
+	background:#00e5bc;
+}
+.live-detail .wrapper .info-box h4{
+	text-align: center;
+	color:#333;
+	font-size: 20px;
+}
+.live-detail .wrapper .info-box p{
+	text-align: center;
+	margin-top:10px;
+	line-height: 18px;
+	font-size: 14px;
+}
+.live-detail .wrapper .info-box .book-btn{
+	background:#ffc600;
+	width:100px;
+	height:30px;
+	display: block;
+	margin:20px auto 0;
+	line-height: 30px;
+	text-align: center;
+	color:#fff;
+	font-size: 14px;
+}
+.live-detail .wrapper .info-box .book-btn.has-book{
+	background:#ddd
+}

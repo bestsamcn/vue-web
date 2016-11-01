@@ -9,6 +9,8 @@ import filter from './filter.js'
 import $ from 'jquery'
 import '../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
 import './assets/js/tagcanvas.js'
+import './assets/js/countdown.js'
+
 
 
 import App from './App.vue'

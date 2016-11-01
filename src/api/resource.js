@@ -57,7 +57,7 @@ export const getGuessLikeList = Vue.resource(ROOT_API + '/userAll/getGuessLike')
 
 //直播播
 export const getVideoList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&seq={seq}&status={status}&livetime={livetime}&order={order}&tagids={tagids}')
-export const getLiveDetail = Vue.resource(ROOT_API + '/liveVod//liveVod/getById?id={id}')
+export const getLiveDetail = Vue.resource(ROOT_API + '/liveVod/getById?id={id}')
 
 
 

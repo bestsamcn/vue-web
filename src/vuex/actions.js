@@ -208,6 +208,20 @@ export const refreshLiveVideoList = ({ dispatch },videoParams)=>{
     })
     return promise
 }
+//获取直播详情
+export const getLiveDetail = ({ dispath },id)=>{
+	let promise = new Promise ((resolve,reject)=>{
+		api.getLiveDetail(id).then(res=>{
+			if(res.ok && res.data.retCode === 0 && !!res.data.data){
+				return resolve(res.data.data)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
 
 
 function makeActions(type){
