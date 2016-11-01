@@ -1,12 +1,11 @@
-<style src="../../assets/css/live/live.css"></style>
+<style src="../../assets/css/live/live.css" scoped></style>
 <template>
     <div class="router-view" transition="outLeftInRight">
         <Banner :slider-banner-list="liveBannerList" :carousel-id="idGroup.id1"></Banner>
+        <Videotag :all-tag-list="allTagList" :has-choose-tags.sync="videoParams.tagids"></Videotag>
    	    <div class="live-wrapper">
             <Videolist :video-list="liveVideoList"></Videolist>
-            <div class="more-video">
-                <a v-show="isMore" @click="getMoreVideo()">加载更多</a>
-            </div>
+            <Morebtn v-show="isMore" :current-page.sync="videoParams.page"></Morebtn>
    	    </div>
    	    <Foot v-if="isAllReady"></Foot>
     </div>
@@ -15,8 +14,11 @@
     import Banner from '../common/Banner.vue'
     import Videolist from '../common/Videolist.vue'
     import Foot from '../common/Foot.vue'
-    import { getLiveBannerList, getLiveVideoList } from '../../vuex/actions.js'
+    import Morebtn from './Morebtn.vue'
+    import Videotag from './Videotag.vue'
+    import { getLiveBannerList, getLiveVideoList, refreshLiveVideoList } from '../../vuex/actions.js'
 	export default{
+        name:'live',
 		data(){
 			return{
 				idGroup:{
@@ -38,17 +40,21 @@
         components:{
         	Banner,
         	Foot,
-            Videolist
+            Videolist,
+            Morebtn,
+            Videotag
         },
         vuex:{
         	getters:{
         		bannerParams:({ live })=>live.bannerParams,
         		liveBannerList:({ live })=>live.liveBannerList,
-                liveVideoList:({ live })=>live.liveVideoList
+                liveVideoList:({ live })=>live.liveVideoList,
+                allTagList:({ common })=>common.allTagList
         	},
         	actions:{
         		getLiveBannerList,
-                getLiveVideoList
+                getLiveVideoList,
+                refreshLiveVideoList
         	}
         },
         methods:{
@@ -62,15 +68,29 @@
                 });
         	},
             getMoreVideo(){
-                this.videoParams.page++
+                if(this.videoParams.page === 1) return
                 this.getLiveVideoList(this.videoParams).then((res)=>{
                     if(this.videoParams.page*this.videoParams.rows >= res.total){
                         this.isMore = false
+                    }else{
+                        this.isMore = true
                     }
                 })
+            },
+            refreshVideo(){
+                this.videoParams.page = 1;
+                this.refreshLiveVideoList(this.videoParams).then((res)=>{
+                    if(this.videoParams.page*this.videoParams.rows >= res.total){
+                        this.isMore = false
+                    }else{
+                        this.isMore = true
+                    }
+                }).catch(e=>{})
             }
         },
         watch:{
+            'videoParams.page':'getMoreVideo',
+            'videoParams.tagids':'refreshVideo'
         },
         created(){
         	this.$nextTick(()=>{

@@ -55,14 +55,18 @@ export const userLogout = Vue.resource(ROOT_API + '/user/logout')
 export const setUserBase = Vue.resource(ROOT_API+'/user/getCurrentUser')
 export const setUserInfo = Vue.resource(ROOT_API+'/user/getById?id={id}')
 
-//首页
+//公共部分
 export const getBannerList = Vue.resource(ROOT_API + '/banner/getListBanner?modelBanner={modelBanner}&seq={seq}&status={status}')
+export const getAllTagList = Vue.resource(ROOT_API + '/tag/getListTag')
+
+//首页
 export const getCloudTagList = Vue.resource(ROOT_API + '/tag/getListTag?page={page}&rows={rows}')
 export const getLiveVodList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&watchnum={watchnum}')
 export const getGuessLikeList = Vue.resource(ROOT_API + '/userAll/getGuessLike')
 
-//主播
+//直播播
 export const getVideoList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?page={page}&rows={rows}&seq={seq}&status={status}&livetime={livetime}&order={order}&tagids={tagids}')
+export const getLiveDetail = Vue.resource(ROOT_API + '/liveVod/getById?id={id}')
 
 
 

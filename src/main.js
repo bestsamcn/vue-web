@@ -3,19 +3,27 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import VueResource from 'vue-resource'
+import VueLazyload from 'vue-lazyload'
+import { sync } from 'vuex-router-sync'
 import filter from './filter.js'
 import $ from 'jquery'
 import '../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
 import './assets/js/tagcanvas.js'
+import './assets/js/countdown.js'
+
 
 
 import App from './App.vue'
 import routerMap from './router.js'
+import store from './vuex/store.js'
 Vue.use(filter)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
-
+Vue.use(VueLazyload, {
+  error: '/assets/img/404.png',
+  loading: '/assets/img/loading.svg'
+})
 
 
 
@@ -29,7 +37,7 @@ const router = new VueRouter({
     //是否使用路由连接模式，true后，切换路由。链接将不变
     abstract:false,
     //是否在首次加载页面的时候就启用路由切换动画
-    transitionOnLoad:true,
+    transitionOnLoad:false,
     //是否保存滚动高度
     saveScrollPosition:false,
     //路由激活样式
@@ -41,7 +49,7 @@ const rootApp =Vue.extend(App)
 routerMap(router)
 
 
-
+sync(store, router)
 router.start(rootApp,'body');
 
 

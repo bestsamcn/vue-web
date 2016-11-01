@@ -82,6 +82,7 @@
 		},
 		route: {
 	    	activate:function (transition) {
+	    		
 	            this.userInfo.uid ? transition.redirect('/') : transition.next()
     		}
     	}

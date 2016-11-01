@@ -1,0 +1,32 @@
+.video-tag{
+	width:100%;
+	padding:10px;
+	background:#fff;
+}
+.video-tag h4{
+	margin-top:10px;
+	font-size: 14px;
+}
+.video-tag .tag-wrapper{
+	overflow: hidden;
+}
+.video-tag .tag-wrapper label{
+	display: inline-block;
+	margin-right: 10px;
+	margin-top:10px;
+}
+.video-tag .tag-wrapper label input{
+	display: none;
+}
+.video-tag .tag-wrapper label span{
+	padding:10px 20px;
+	color:#333;
+	border:1px solid #eee;
+	font-size: 12px;
+	display: block;
+}
+
+.video-tag .tag-wrapper label input:checked+span{
+	border:1px solid #0090ff;
+	color:#0090ff;
+}

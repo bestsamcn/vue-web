@@ -9,3 +9,8 @@
 		<p class="icp">©深圳三万英尺传媒有限公司 | 粤ICP备16051715号</p>
 	</div>
 </template>
+<script>
+	export default{
+		name:'foot'
+	}
+</script>

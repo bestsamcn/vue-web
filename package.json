@@ -20,12 +20,14 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
     "vue": "^1.0.21",
+    "vue-lazyload": "^0.8.3",
     "vue-resource": "^1.0.3",
     "vue-router": "^0.7.13",
     "vue-slider": "^1.1.1",
     "vue-strap": "^1.1.29",
     "vue-validator": "^2.1.7",
-    "vuex": "^1.0.0"
+    "vuex": "^1.0.0",
+    "vuex-router-sync": "^2.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

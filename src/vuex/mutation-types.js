@@ -8,6 +8,7 @@
  //common
  export const SET_TOAST = 'SET_TOAST'
  export const SET_LOADING = 'SET_LOADING'
+ export const GET_ALL_TAG_LIST= 'GET_ALL_TAG_LIST'
 
 //shop
 export const CHANGE_PRIZE = 'CHANGE_PRIZE'
@@ -35,5 +36,11 @@ export const SET_ASIDE_STATE = 'SET_ASIDE_STATE'
 //live
 export const GET_LIVE_BANNER_LIST = 'GET_LIVE_BANNER_LIST'
 export const GET_LIVE_VIDEO_LIST = 'GET_LIVE_VIDEO_LIST'
+export const REFRESH_LIVE_VIDEO_LIST = 'REFRESH_LIVE_VIDEO_LIST'
+
+//video
+export const GET_VIDEO_BANNER_LIST = 'GET_VIDEO_BANNER_LIST'
+export const GET_VIDEO_VIDEO_LIST = 'GET_VIDEO_VIDEO_LIST'
+export const REFRESH_VIDEO_VIDEO_LIST = 'REFRESH_VIDEO_VIDEO_LIST'
 
 

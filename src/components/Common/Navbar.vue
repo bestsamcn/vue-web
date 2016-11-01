@@ -7,7 +7,7 @@
 		<a v-link="{path:'/cart'}">商品</a>
 		<a v-link="{path:'/count'}">购物车<i>{{cartsAmout}}</i></a> -->
 		<a href="javascript:;" @click="toggleAside()" class="icon fa fa-navicon fa-lg left-btn"></a>
-		<span class="header-tit">首页</span>
+		<span class="header-tit">{{title}}</span>
         <a href="javascript:;" v-if="!userToken" class="icon fa fa-user-circle-o fa-lg right-btn"></a>
 		<a href="javascript:;" v-if="userToken" class="right-btn">
             <img :src="userInfo.headimg ? IMG_URL+userInfo.headimg :'../assets/img/user-nologin.png'" alt="avatar">      
@@ -35,7 +35,8 @@
         	getters:{
         		carts:({ index })=>index.carts,
                 userInfo:({ sign })=>sign.userInfo,
-                userToken:({ sign })=>sign.userToken
+                userToken:({ sign })=>sign.userToken,
+                title:({ route })=>route.title
         	}
         },
         computed:{

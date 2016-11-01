@@ -31,6 +31,7 @@
 <script>
     import validator from '../../utils/validate.js'
 	export default{
+		name:'signup',
 		components:{
 		},
         data(){

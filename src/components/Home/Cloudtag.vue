@@ -15,6 +15,7 @@
 </template>
 <script>
 	export default{
+		name:'cloudtag',
 		props:{
 			cloudTagList:{
 				type:Array,

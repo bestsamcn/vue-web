@@ -87,6 +87,24 @@ export const userLogout = ({ dispatch })=>{
 	return promise
 }
 
+//公共——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//获取标签
+export const getAllTagList = ({ dispatch })=>{
+	let promise = new Promise((resolve,reject)=>{
+		api.getAllTagList().then(res=>{
+			if(res.ok && res.data.retCode === 0 && !!res.data.rows.length){
+				resolve(res.data.rows)
+				return dispatch(type.GET_ALL_TAG_LIST,res.data.rows)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
+
+
 
 //首页——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
 
@@ -174,7 +192,49 @@ export const getLiveVideoList = ({ dispatch },videoParams)=>{
 	    })
     })
     return promise
+}
+export const refreshLiveVideoList = ({ dispatch },videoParams)=>{
+	//返回后可以作为链式调用
+	let promise = new Promise((resolve,reject)=>{
+	    api.getVideoList(videoParams).then(res=>{
+	    	if(res.ok && res.data.retCode ===0){
+	    		resolve(res.data)
+	            return dispatch(type.REFRESH_LIVE_VIDEO_LIST,res.data.rows)
+	    	}
+	    	reject(res.data.retCode)
+	    },res=>{
+	        reject(res)
+	    })
+    })
+    return promise
+}
+//获取直播详情
+export const getLiveDetail = ({ dispath },id)=>{
+	let promise = new Promise ((resolve,reject)=>{
+		api.getLiveDetail(id).then(res=>{
+			if(res.ok && res.data.retCode === 0 && !!res.data.data){
+				return resolve(res.data.data)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
 
+//点播——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+export const getVideoBannerList = ({ dispatch },bannerParams)=>{
+	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
+	//返回后可以作为链式调用
+    return api.getBannerList(bannerParams).then(res=>{
+    	if(res.ok && res.data.retCode ===0 && !!res.data.rows.length){
+            return dispatch(type.GET_VIDEO_BANNER_LIST,res.data.rows)
+    	}
+        dispatch(type.GET_VIDEO_BANNER_LIST,examList)
+    },res=>{
+        dispatch(type.GET_VIDEO_BANNER_LIST,examList)
+    })
 }
 
 

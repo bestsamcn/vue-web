@@ -14,6 +14,7 @@ import shop from './modules/shop.js'
 import sign from './modules/sign.js'
 import common from './modules/common.js'
 import live from './modules/live'
+import video from './modules/video'
 
 export default new Vuex.Store({
 	modules:{
@@ -21,6 +22,7 @@ export default new Vuex.Store({
         sign,
         common,
         index,
-        live
+        live,
+        video
 	}
 })

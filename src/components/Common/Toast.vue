@@ -6,6 +6,7 @@
 </template>
 <script>
 	export default{
+		name:'toast',
 		props:{
 			toastShow:{
 				type:Boolean,
