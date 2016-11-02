@@ -1,4 +1,4 @@
-<style src="../../assets/css/live/videotag.css" scoped></style>
+<style src="../../assets/css/common/videotag.css" scoped></style>
 <template>
 	<div class="video-tag" v-if="!!allTagList.length">
 	    <h4>标签：</h4>
@@ -8,7 +8,6 @@
 				<span>{{tag.name}}</span>
 			</label>
 	    </div>
-		
 	</div>
 </template>
 <script>

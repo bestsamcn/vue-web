@@ -1,0 +1,42 @@
+.video-list{
+	padding:10px;
+}
+.video-list .list-item{
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    margin-top:10px;
+    display: block;
+    width:100%;
+}
+.video-list .list-item .item-img{
+	width:100%;
+	display: block;
+}
+.video-list .list-item .item-cont{
+	padding:10px;
+}
+.video-list .list-item .item-cont .cont-tit{
+	color:#333;
+	font-size: 14px;
+	line-height: 30px;
+	text-align: left;
+}
+.video-list .list-item .item-cont .cont-other{
+	overflow: hidden;
+	display: flex;
+	justify-content:space-between;
+	align-item:center
+}
+.video-list .list-item .item-cont .cont-other .other-time{
+	color:#666;
+	font-size: 14px;
+	float: left;
+	text-align: left;
+	line-height: 30px;
+	display: block;
+}
+.video-list .list-item .item-cont hr{
+	height:1px;
+	background:#eee;
+	border:none;
+}

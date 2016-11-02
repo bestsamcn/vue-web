@@ -103,6 +103,21 @@ export const getAllTagList = ({ dispatch })=>{
 	})
 	return promise
 }
+//获取分类
+export const getCategoryList = ({ dispatch })=>{
+	let promise = new Promise((resolve,reject)=>{
+		api.getCategoryList().then((res)=>{
+			if(res.ok && res.data.retCode === 0 && !!res.data.rows.length){
+				resolve(res.data.rows)
+				return dispatch(type.GET_CATEGORY_LIST,res.data.rows)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
 
 
 
@@ -185,14 +200,15 @@ export const getLiveVideoList = ({ dispatch },videoParams)=>{
 	    		resolve(res.data)
 	            return dispatch(type.GET_LIVE_VIDEO_LIST,res.data.rows)
 	    	}
-	    	resolve(res.data)
+	    	resolve(res.data.retCode)
 	    },res=>{
 	        dispatch(type.GET_LIVE_VIDEO_LIST,examList)
-	        reject()
+	        reject(res)
 	    })
     })
     return promise
 }
+//添加标签筛选后，刷新原有数据
 export const refreshLiveVideoList = ({ dispatch },videoParams)=>{
 	//返回后可以作为链式调用
 	let promise = new Promise((resolve,reject)=>{
@@ -224,6 +240,7 @@ export const getLiveDetail = ({ dispath },id)=>{
 }
 
 //点播——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+//点播banner
 export const getVideoBannerList = ({ dispatch },bannerParams)=>{
 	let examList = [{"tempCreatedat":"2016-10-27","tempUpdatedat":null,"id":23,"banner":"1hutnndp68ne.jpg","detail":"","seq":1,"status":10,"modelBanner":1,"url":"liveDetail.html?id=134","createdat":1477497600000,"title":"南方医科大学主持人大赛"}]
 	//返回后可以作为链式调用
@@ -236,7 +253,40 @@ export const getVideoBannerList = ({ dispatch },bannerParams)=>{
         dispatch(type.GET_VIDEO_BANNER_LIST,examList)
     })
 }
-
+//获取视频列表
+export const getVideoVideoList = ({ dispatch },videoParams)=>{
+	let examList = [{"@id":1,"tempCreatedat":"2016-10-26","tempUpdatedat":null,"id":139,"title":"Selfridges奢侈品牌看看看","description":"","listimg":"1hut3lebd3u0.jpg","livetime":1477731600000,"duration":6000,"watchnum":0,"ordernum":0,"hostpeople":"Summer","categoryid":58,"seq":99,"itemid":13,"companyid":0,"lookid":0,"liveurl":"","status":1,"clicknum":0,"videourl":"","freestatus":1,"price":0.0,"createdat":1477411200000,"templivetime":"2016-10-29 17:00","tempduration":"60:00","tagNames":"人物","tagIds":"2","categorypid":0,"lookName":null,"itemName":"网红","companyName":null,"categoryName":"我型我秀","begintime":0,"endtime":0,"userId":0,"vodcode":"6007","tags":[{"tempCreatedat":null,"tempUpdatedat":null,"id":2,"name":"人物","description":"人物","createdat":-28800000,"type":0}],"livetags":"2","tagids":0,"item":null,"company":null,"look":null,"vodstatus":2,"discusstotal":0,"ifBook":false,"dealBeginTime":0,"idlist":[]}]
+	//返回后可以作为链式调用
+	let promise = new Promise((resolve,reject)=>{
+	    api.getVideoList(videoParams).then(res=>{
+	    	if(res.ok && res.data.retCode === 0 && !!res.data.rows.length){
+	    		resolve(res.data)
+	            return dispatch(type.GET_VIDEO_VIDEO_LIST,res.data.rows)
+	    	}
+	    	resolve(res.data.retCode)
+	    },res=>{
+	        dispatch(type.GET_VIDEO_VIDEO_LIST,examList)
+	        reject(res)
+	    })
+    })
+    return promise
+}
+//添加标签筛选后，刷新原有数据
+export const refreshVideoVideoList = ({ dispatch },videoParams)=>{
+	//返回后可以作为链式调用
+	let promise = new Promise((resolve,reject)=>{
+	    api.getVideoList(videoParams).then(res=>{
+	    	if(res.ok && res.data.retCode ===0 && !!res.data.rows.length){
+	    		resolve(res.data)
+	            return dispatch(type.REFRESH_VIDEO_VIDEO_LIST,res.data.rows)
+	    	}
+	    	reject(res.data.retCode)
+	    },res=>{
+	        reject(res)
+	    })
+    })
+    return promise
+}
 
 function makeActions(type){
 	//3个点不能少

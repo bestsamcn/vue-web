@@ -12,6 +12,7 @@ import Signup from './components/Sign/Signup.vue'
 import Liveindex from './components/Live/Index.vue'
 import Livedetail from './components/Live/Livedetail.vue'
 import Videoindex from './components/Video/Index.vue'
+import Videodetail from './components/Video/Videodetail.vue'
 export default router => {
     router.map({
         '/home': {
@@ -52,8 +53,8 @@ export default router => {
                 },
                 '/videodetail/:id':{
                     name:'videoDetail',
-                    title:'直播间',
-                    component:Livedetail 
+                    title:'视频详情',
+                    component:Videodetail 
                 }
             }
         },

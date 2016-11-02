@@ -20,7 +20,7 @@ import Loading  from './components/common/Loading.vue'
 
 //vuex
 import store from './vuex/store.js'
-import { setUserBase, setUserInfo, userLogout, setLoading, getAllTagList } from './vuex/actions.js'
+import { setUserBase, setUserInfo, userLogout, setLoading, getAllTagList, getCategoryList } from './vuex/actions.js'
 
 //css/js
 import '../node_modules/font-awesome/css/font-awesome.min.css'
@@ -43,7 +43,8 @@ export default {
             setUserInfo,
             userLogout,
             setLoading,
-            getAllTagList
+            getAllTagList,
+            getCategoryList
 
         },
         getters:{
@@ -51,7 +52,8 @@ export default {
             userInfo:({ sign })=>sign.userInfo,
             toast:({ common })=>common.toast,
             isLoading:({ common })=>common.isLoading,
-            allTagList:({ common })=>common.allTagList
+            allTagList:({ common })=>common.allTagList,
+            categoryList:({ common })=>common.categoryList
         }
     },
     replace:false,
@@ -69,15 +71,12 @@ export default {
         })
         this.$nextTick(()=>{
             if(this.allTagList.length<1){
-                this.getAllTagList().catch(err=>{
-                })
+                this.getAllTagList().catch(err=>{})
+            }
+            if(this.categoryList.length <1){
+                this.getCategoryList().catch(err=>{})
             }
         })
-    },
-    ready(){
-        if(!!this.userToken){
-            this.isShowFooter =false;
-        }
     },
     computed:{
         isShowFooter(){

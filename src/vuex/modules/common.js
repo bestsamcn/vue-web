@@ -1,4 +1,4 @@
-import { SET_ASIDE, SET_ASIDE_STATE, SET_TOAST, SET_LOADING, GET_ALL_TAG_LIST } from '../mutation-types.js'
+import { SET_ASIDE, SET_ASIDE_STATE, SET_TOAST, SET_LOADING, GET_ALL_TAG_LIST, GET_CATEGORY_LIST } from '../mutation-types.js'
 
 const state ={
 	isShowAside:false,
@@ -8,7 +8,8 @@ const state ={
 		text:''
 	},
 	isLoading:false,
-	allTagList:[]
+	allTagList:[],
+	categoryList:[]
 }
 
 const mutations = {
@@ -27,6 +28,9 @@ const mutations = {
 	},
 	[GET_ALL_TAG_LIST](state,allTagList){
         state.allTagList = allTagList
+	},
+	[GET_CATEGORY_LIST](state,categoryList){
+		state.categoryList = categoryList
 	}
 }
 export default{

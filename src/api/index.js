@@ -16,6 +16,7 @@ import {
 	getGuessLikeList,
 	getVideoList,
 	getAllTagList,
+	getCategoryList,
     getLiveDetail
 } from './resource.js'
 export default {
@@ -29,6 +30,7 @@ export default {
 	getBannerList: (data) => getBannerList.get(data),
 	getVideoList: (videoParams) => getVideoList.get(videoParams),
     getAllTagList:()=>getAllTagList.get(),
+    getCategoryList:()=>getCategoryList.get(),
     
     //首页
 	getCloudTagList: (page, rows) => getCloudTagList.get({page: 1,rows: 20}),

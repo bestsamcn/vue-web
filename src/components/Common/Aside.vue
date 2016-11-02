@@ -5,7 +5,7 @@
 		<div class="aside-header">
 			<a>
 				<img :src="userInfo.headimg ? IMG_URL+userInfo.headimg : '../assets/img/user-nologin.png'" alt="">
-				<span>{{userInfo.account ? userInfo.account :'Your Name'}}</span>
+				<span>{{userInfo.account ? userInfo.account :'请登录'}}</span>
 			</a>
 		</div>
 		<div class="aside-content" :class="routeName">
@@ -23,7 +23,7 @@
 	</div>
 </template>
 <script>
-    import { userLogout,setAsideState, setToast } from '../../vuex/actions.js'
+    import { userLogout, setAsideState, setToast } from '../../vuex/actions.js'
     import { IMG_URL,ROOT_API } from '../../api/config.js'
 	export default{
         name:'aside',
