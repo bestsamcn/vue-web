@@ -4,18 +4,18 @@
         <Banner :slider-banner-list="liveBannerList" :carousel-id="idGroup.id1"></Banner>
         <Videotag :all-tag-list="allTagList" :has-choose-tags.sync="videoParams.tagids"></Videotag>
    	    <div class="live-wrapper">
-            <Videolist :video-list="liveVideoList"></Videolist>
-            <Morebtn v-show="isMore" :current-page.sync="videoParams.page"></Morebtn>
+            <Livelist :video-list="liveVideoList"></Livelist>
+            <Morebtn v-if="isAllReady"  v-show="isMore" :current-page.sync="videoParams.page"></Morebtn>
    	    </div>
    	    <Foot v-if="isAllReady"></Foot>
     </div>
 </template>
 <script>
     import Banner from '../common/Banner.vue'
-    import Videolist from '../common/Videolist.vue'
+    import Livelist from './Livelist.vue'
     import Foot from '../common/Foot.vue'
-    import Morebtn from './Morebtn.vue'
-    import Videotag from './Videotag.vue'
+    import Morebtn from '../common/Morebtn.vue'
+    import Videotag from '../common/Videotag.vue'
     import { getLiveBannerList, getLiveVideoList, refreshLiveVideoList } from '../../vuex/actions.js'
 	export default{
         name:'live',
@@ -28,8 +28,8 @@
                 videoParams:{
                     page:1,
                     rows:4,
-                    watchnum:1,
                     status:1,
+                    order:1,
                     livetime:1,
                     seq:1,
                     tagids:''
@@ -40,7 +40,7 @@
         components:{
         	Banner,
         	Foot,
-            Videolist,
+            Livelist,
             Morebtn,
             Videotag
         },

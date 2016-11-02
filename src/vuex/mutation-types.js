@@ -9,6 +9,7 @@
  export const SET_TOAST = 'SET_TOAST'
  export const SET_LOADING = 'SET_LOADING'
  export const GET_ALL_TAG_LIST= 'GET_ALL_TAG_LIST'
+ export const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST'
 
 //shop
 export const CHANGE_PRIZE = 'CHANGE_PRIZE'

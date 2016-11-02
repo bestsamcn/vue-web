@@ -1,4 +1,4 @@
-<style src="../../assets/css/live/morebtn.css"></style>
+<style src="../../assets/css/common/morebtn.css"></style>
 <template>
 	<div class="more-video">
 	    <a @click="getMore">加载更多</a>

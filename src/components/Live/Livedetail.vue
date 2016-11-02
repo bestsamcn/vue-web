@@ -22,8 +22,8 @@
 			return {
                 liveDetail:{
                 	vodstatus:null,
-                	title:'',
-                	hostpeople:'',
+                	title:'主题',
+                	hostpeople:'主持人',
                 	dealBeginTime:0,
                 	listimg:'',
                 	ifBook:false

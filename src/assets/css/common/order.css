@@ -1,0 +1,22 @@
+.order-list{
+	width:100%;
+	margin-bottom: 10px;
+}
+.order-list .wrapper{
+	padding:10px;
+	background:#fff;
+	color:#333;
+	font-size: 14px;
+}
+.order-list .wrapper span{
+	color:#333;
+	padding:4px 10px;
+	font-size: 14px;
+}
+.order-list .wrapper span i{
+	font-size: 12px;
+	margin-left:5px;
+}
+.order-list .wrapper input:checked + span{
+	color:#0090ff;
+}

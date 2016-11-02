@@ -1,13 +1,14 @@
-<style src="../../assets/css/common/videolist.css" scoped></style>
+<style src="../../assets/css/video/videolist.css" scoped></style>
 <template>
 	<div class="video-list" v-if="!!videoList.length">
-		<a class="list-item" v-for="item in videoList" v-link="{path:`/live/livedetail/${item.id}`}">
+		<a class="list-item" v-for="item in videoList" v-link="{path:`/video/videodetail/${item.id}`}">
 			<div class="bg-box item-img" v-lazy:background-image="POSTER_URL+item.listimg"></div>
 			<div class="item-cont">
 				<p class="cont-tit">{{item.title}}</p>
+				<hr>
 				<div class="cont-other">
+				    <span class="other-time">{{item.hostpeople}}</span>
 					<span class="other-time">{{item.templivetime}}</span>
-					<span class="other-status" :class="{'book': item.vodstatus=== 1, 'live':item.vodstatus ===2, 'over':item.vodstatus === 3}">{{item.vodstatus | videoStatus}}</span>
 				</div>
 			</div>
 		</a>

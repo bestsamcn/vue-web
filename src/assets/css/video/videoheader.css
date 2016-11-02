@@ -1,0 +1,26 @@
+.video-header{
+	background:#0090ff;
+	padding:10px;
+	text-align: center;
+	color:#fff;
+}
+.video-header h1{
+	padding-top: 40px;
+    font-size: 34px;
+    color:#fff;
+}
+.video-header p{
+	font-size: 20px;
+    display: block;
+    color: #fff;
+    margin-top: 10px;
+}
+.video-header a{
+	width: 80px;
+    height: 40px;
+    border: 1px solid #fff;
+    line-height: 40px;
+    display: block;
+    color:#fff;
+    margin: 40px auto;
+}
