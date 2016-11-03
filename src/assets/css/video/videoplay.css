@@ -1,0 +1,18 @@
+.video-play{
+	padding:10px;
+}
+.video-play h4{
+	 margin-top: 10px;
+    font-size:18px;
+    color: #333;
+}
+#play-model{
+	width: 100%;
+    padding-right: 0;
+    height:250px;
+}
+@media screen and (max-width: 768px) and (orientation: portrait){
+    .full-screen {
+        position: static;
+    }
+}

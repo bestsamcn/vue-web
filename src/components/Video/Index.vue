@@ -6,7 +6,7 @@
 	    <Order v-show="isAllReady"></Order>
 	    <div class="list-wrapper">
 	    	<Videolist :video-list="videoVideoList"></Videolist>
-            <Morebtn v-if="isAllReady"  v-show="isMore" :current-page.sync="videoParams.page"></Morebtn>
+            <Morebtn  v-show="isMore" :current-page.sync="videoParams.page"></Morebtn>
 	    </div>
 	    <Foot  v-if="isAllReady"></Foot>
 	</div>
@@ -34,7 +34,8 @@
                     status:2,
                     tagids:''
                 },
-                isAllReady:false
+                isAllReady:false,
+                isMore:true
 			}
 		},
 		components:{

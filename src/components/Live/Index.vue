@@ -100,7 +100,7 @@
         					return resolve()
         				})
         			}else{
-        				return resoleve()
+        				return resolve()
         			}
         		})
                 let p2 = new Promise((resolve,reject)=>{
@@ -112,7 +112,7 @@
                             return resolve()
                         })
                     }else{
-                        return resoleve()
+                        return resolve()
                     }
                 })
         		Promise.all([p1,p2]).then(()=>{
