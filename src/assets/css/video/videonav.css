@@ -1,0 +1,22 @@
+.video-nav {
+    text-align: left;
+    padding:20px 10px 0 10px;
+}
+.video-nav .pos-title {
+    color: #0090ff;
+    font-size: 12px;
+}
+.video-nav .pos-title .pos-arrow {
+    color: #00e5bd;
+    margin: 0 5px;
+}
+.video-nav .pos-title a{
+    color:#0090ff;
+    font-size: 12px;
+}
+
+.play-container .play-title {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #333;
+}

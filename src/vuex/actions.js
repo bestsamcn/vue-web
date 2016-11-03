@@ -288,6 +288,36 @@ export const refreshVideoVideoList = ({ dispatch },videoParams)=>{
     return promise
 }
 
+//获取点播详情
+export const getVideoDetail = ({ dispath },id)=>{
+	let promise = new Promise ((resolve,reject)=>{
+		api.getVideoDetail(id).then(res=>{
+			if(res.ok && res.data.retCode === 0 && !!res.data.data){
+				return resolve(res.data.data)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
+//获取播放列表
+export const getPlayList = ({ dispatch },playParams)=>{
+	let promise = new Promise((resolve,reject)=>{
+		api.getPlayList(playParams).then(res=>{
+			if(res.ok && res.data.retCode === 0 && res.data.rows){
+				//需要用到总数
+				return resolve(res.data)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
+
 function makeActions(type){
 	//3个点不能少
 	return ({dispatch},...args) => dispatch(type,...args);

@@ -9,6 +9,7 @@
         </div>
     </div>
     <Aside :is-show-aside.sync="isShowAside" :is-login.sync="isShowFooter"></Aside>
+    <Gotop :use-flag="routeChange"></Gotop>
 </template>
 
 <script>
@@ -17,9 +18,11 @@ import Aside  from './components/common/Aside.vue'
 import Navbar  from './components/common/Navbar.vue'
 import Toast  from './components/common/Toast.vue'
 import Loading  from './components/common/Loading.vue'
+import Gotop  from './components/common/Gotop.vue'
 
 //vuex
 import store from './vuex/store.js'
+import $$ from './utils/tools.js'
 import { setUserBase, setUserInfo, userLogout, setLoading, getAllTagList, getCategoryList } from './vuex/actions.js'
 
 //css/js
@@ -53,7 +56,8 @@ export default {
             toast:({ common })=>common.toast,
             isLoading:({ common })=>common.isLoading,
             allTagList:({ common })=>common.allTagList,
-            categoryList:({ common })=>common.categoryList
+            categoryList:({ common })=>common.categoryList,
+            routeChange:({ route })=>route.name
         }
     },
     replace:false,
@@ -61,8 +65,10 @@ export default {
         Navbar,
         Aside,
         Toast,
-        Loading
+        Loading,
+        Gotop
     },
+
     created(){
         this.setUserBase().then(res=>{
             this.setUserInfo(res)

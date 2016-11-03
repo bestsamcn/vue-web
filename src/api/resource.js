@@ -70,7 +70,8 @@ export const getVideoList = Vue.resource(ROOT_API + '/liveVod/getListLiveVod?pag
 export const getLiveDetail = Vue.resource(ROOT_API + '/liveVod/getById?id={id}')
 
 //视频
-
+export const getVideoDetail = Vue.resource(ROOT_API+'/liveVod/getById?id={id}')
+export const getPlayList = Vue.resource(ROOT_API+'/liveVod/getListLiveVod?categoryid={categoryid}&page={page}&rows={rows}')
 
 
 
