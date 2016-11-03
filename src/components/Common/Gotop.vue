@@ -1,6 +1,6 @@
 <style src="../../assets/css/common/gotop.css" scoped></style>
 <template>
-	<a href="javasript:;" id="go-top">
+	<a href="javasrcipt:;" id="go-top">
 		<span></span>
 	</a>
 </template>
