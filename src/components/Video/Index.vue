@@ -80,12 +80,16 @@
         	},
             getMoreVideo(){
                 if(this.videoParams.page === 1) return
-                this.getVideoVideoList(this.videoParams).then((res)=>{
+                this.getVideoVideoList(this.videoParams).then(res=>{
                     if(this.videoParams.page*this.videoParams.rows >= res.total){
                         this.isMore = false
                     }else{
                         this.isMore = true
                     }
+                },res=>{
+                	this.isMore = false
+                }).catch(e=>{
+                	this.isMore = false
                 })
             },
             refreshVideo(){

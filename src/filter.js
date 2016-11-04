@@ -25,5 +25,12 @@ allFilter.install = Vue => {
 		}
 		return status
 	})
+	Vue.filter('formatTime',str=>{
+		var arr = str.toString().split('');
+        // var arr1 = arr.splice(-2,0,':');
+        arr.splice(-2, 0, ':');
+
+        return arr.join('');
+	})
 }
 export default allFilter

@@ -1,6 +1,6 @@
 <style src="../../assets/css/video/videonav.css" scoped></style>
 <template>
-	<div class="video-nav" v-if="!!headerData.pName || !!headerData.cName">
+	<div class="video-nav" v-if="!!headerData">
 		<h3 class="pos-title">
 			MEDIA
 			<span class="pos-arrow">&gt;</span>

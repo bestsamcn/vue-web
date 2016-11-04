@@ -4,33 +4,46 @@
 	    <div class="wrapper">
 	    	<Videoheader :header-data="headerData"></Videoheader>
 	    	<Videonav :header-data="headerData"></Videonav>
-	    	<Videoplay :video-info="videoDetail"></Videoplay>
+	    	<Videoplay :video-info="videoDetail" :video-id="videoId"></Videoplay>
+	    	<Videoscroll :play-list="playList" :play-list-params.sync="playListParams"  :is-more-play-list="isMorePlayList"></Videoscroll>
 	    </div>
 	</div>
 </template>
 <script>
+
 	import { getVideoDetail, getPlayList } from '../../vuex/actions.js'
     import Videoheader from './Videoheader.vue'
     import Videonav from './Videonav.vue'
     import Videoplay from './Videoplay.vue'
+    import Videoscroll from './Videoscroll.vue'
+    import IScroll from '../../assets/js/iscroll.js'
     import $$ from '../../utils/tools.js'
 	export default{
 		name:'videodetail',
 		components:{
             Videoheader,
             Videonav,
-            Videoplay
+            Videoplay,
+            Videoscroll
 		},
 		data(){
 			return {
                 videoDetail:{},
+                prevRoute:'',
                 headerData:{
                 	pName:'',
                 	cName:'',
                     playListTotal:null
                 },
-                prevRoute:'',
-                playList:[]
+                playList:[],
+                playListParams:{
+                	page:1,
+                	rows:10,
+                	catagoryid:()=>{
+                		return this.videoDetail.categoryid
+                	}
+                },
+                isMorePlayList:true
 			}
 		},
 		vuex:{
@@ -45,6 +58,7 @@
 
 		},
 		methods:{
+			//拉去视频数据
 			pullVideoDetail(){
 				if(!this.videoId) return
 			    let promise = new Promise((resolve,reject)=>{
@@ -55,13 +69,15 @@
 			    })
 			    return promise
 			},
+			//拉取播放列表
 			pullPlayList(){
       			if(!this.videoDetail.categoryid) return
-      			this.getPlayList({catagoryid:this.videoDetail.categoryid,page:1,rows:10}).then(res=>{
+      			this.getPlayList(this.playListParams).then(res=>{
       				this.playList = res.rows
       				this.headerData.playListTotal = res.total
       			})
 			},
+			//设置导航地图分类
 			setCatecory(){
 				if (!this.categoryList) return;
                 let paramsId = this.videoDetail.categoryid
@@ -91,12 +107,28 @@
                 this.headerData.pName = pName
                 this.headerData.cName = cName
 			},
+			//滚动加载更多
+            getMorePlayList(){
+            	if(this.playListParams.page ===1) return
+            	this.getPlayList(this.playListParams).then(res=>{
+      				this.playList =this.playList.concat(res.rows) 
+            		if(this.playListParams.page * this.playListParams.rows >= res.total){
+            			this.isMorePlayList = false
+            		}
+      			},res=>{
+            		this.isMorePlayList = false
+      			}).catch(e=>{
+            		this.isMorePlayList = false
+      			})
+            },
+            //返回上一级
 			goBack(){
 				this.$route.router.go(this.headerData.prevRoute)
 			}
 		},
 		watch:{
-			videoId:'pullVideoDetail'
+			videoId:'pullVideoDetail',
+			'playListParams.page':'getMorePlayList'
 		},
 		route:{
 			data(transition){
