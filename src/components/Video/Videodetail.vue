@@ -5,17 +5,24 @@
 	    	<Videoheader :header-data="headerData"></Videoheader>
 	    	<Videonav :header-data="headerData"></Videonav>
 	    	<Videoplay :video-info="videoDetail" :video-id="videoId"></Videoplay>
-	    	<Videoscroll :play-list="playList" :play-list-params.sync="playListParams"  :is-more-play-list="isMorePlayList"></Videoscroll>
+	    	<Videoscroll :play-list="playList" :play-list-params.sync="playListParams" :is-fetching="isFetching" :is-more-play-list="isMorePlayList"></Videoscroll>
+            <Videointr :video-info="videoDetail"></Videointr>
+            <Videodiscuss :discuss-list.sync="discussList" :is-more-discuss-list="isMoreDiscussList"></Videodiscuss>
 	    </div>
 	</div>
 </template>
 <script>
 
-	import { getVideoDetail, getPlayList } from '../../vuex/actions.js'
+	import { getVideoDetail, getPlayList, getDiscussList } from '../../vuex/actions.js'
     import Videoheader from './Videoheader.vue'
     import Videonav from './Videonav.vue'
     import Videoplay from './Videoplay.vue'
     import Videoscroll from './Videoscroll.vue'
+    import Videointr from './Videointr.vue'
+    import Videodiscuss from './Videodiscuss.vue'
+    import Morebtn from '../common/Morebtn.vue'
+
+
     import IScroll from '../../assets/js/iscroll.js'
     import $$ from '../../utils/tools.js'
 	export default{
@@ -24,10 +31,14 @@
             Videoheader,
             Videonav,
             Videoplay,
-            Videoscroll
+            Videoscroll,
+            Videointr,
+            Videodiscuss,
+            Morebtn
 		},
 		data(){
 			return {
+                videoId:'',
                 videoDetail:{},
                 prevRoute:'',
                 headerData:{
@@ -39,21 +50,27 @@
                 playListParams:{
                 	page:1,
                 	rows:10,
-                	catagoryid:()=>{
-                		return this.videoDetail.categoryid
-                	}
+                	catagoryid:''
                 },
-                isMorePlayList:true
+                isMorePlayList:true,
+                isFetching:false,
+                discussListParams:{
+                    livevodid:'',
+                    page:1,
+                    rows:4
+                },
+                discussList:[],
+                isMoreDiscussList:true
 			}
 		},
 		vuex:{
 			getters:{
-				videoId:({ route })=>route.params.id,
 				categoryList:({ common })=>common.categoryList
 			},
 			actions:{
 				getVideoDetail,
-				getPlayList
+				getPlayList,
+                getDiscussList
 			}
 
 		},
@@ -64,6 +81,7 @@
 			    let promise = new Promise((resolve,reject)=>{
 			    	this.getVideoDetail({id:this.videoId}).then(res=>{
 						this.videoDetail = res;
+                        this.playListParams.catagoryid = res.categoryid
 						resolve()
 					})
 			    })
@@ -77,6 +95,21 @@
       				this.headerData.playListTotal = res.total
       			})
 			},
+            //获取评论列表
+            pullDiscussList(){
+                if(!this.videoId) return
+                this.getDiscussList(this.discussListParams).then(res=>{
+                    this.discussList = res.rows
+                    if(this.discussListParams.page * this.discussListParams.rows >= res.total){
+                        this.isMoreDiscussList = false
+                    }
+                },res=>{
+                    this.isMoreDiscussList = false
+
+                }).catch(e=>{
+                    this.isMoreDiscussList = false
+                })
+            },
 			//设置导航地图分类
 			setCatecory(){
 				if (!this.categoryList) return;
@@ -110,15 +143,19 @@
 			//滚动加载更多
             getMorePlayList(){
             	if(this.playListParams.page ===1) return
+                this.isFetching = true
             	this.getPlayList(this.playListParams).then(res=>{
       				this.playList =this.playList.concat(res.rows) 
             		if(this.playListParams.page * this.playListParams.rows >= res.total){
             			this.isMorePlayList = false
+                        this.isFetching = false
             		}
       			},res=>{
             		this.isMorePlayList = false
+                    this.isFetching = false
       			}).catch(e=>{
             		this.isMorePlayList = false
+                    this.isFetching = false
       			})
             },
             //返回上一级
@@ -127,15 +164,18 @@
 			}
 		},
 		watch:{
-			videoId:'pullVideoDetail',
-			'playListParams.page':'getMorePlayList'
+			'playListParams.page':'getMorePlayList',
+            'categoryList':'setCatecory'
 		},
 		route:{
 			data(transition){
+                this.videoId = transition.to.params.id
+                this.discussListParams.livevodid = transition.to.params.id
                 this.headerData.prevRoute = transition.from.path || '/home';
 				this.pullVideoDetail().then(()=>{
 				    this.setCatecory()
 				    this.pullPlayList()
+                    this.pullDiscussList()
 				})
 			}
 		}

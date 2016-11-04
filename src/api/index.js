@@ -19,7 +19,8 @@ import {
 	getCategoryList,
     getLiveDetail,
     getVideoDetail,
-    getPlayList
+    getPlayList,
+    getDiscussList
 } from './resource.js'
 export default {
 	//用户
@@ -44,5 +45,6 @@ export default {
 
 	//视频
 	getVideoDetail:(id)=>getVideoDetail.get(id),
-	getPlayList:(relatedParams)=>getPlayList.get(relatedParams)
+	getPlayList:(relatedParams)=>getPlayList.get(relatedParams),
+	getDiscussList:(discussParams)=>getDiscussList.get(discussParams)
 }

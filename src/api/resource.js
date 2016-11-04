@@ -71,7 +71,8 @@ export const getLiveDetail = Vue.resource(ROOT_API + '/liveVod/getById?id={id}')
 
 //视频
 export const getVideoDetail = Vue.resource(ROOT_API+'/liveVod/getById?id={id}')
-export const getPlayList = Vue.resource(ROOT_API+'/liveVod/getListLiveVod?categoryid={categoryid}&page={page}&rows={rows}')
+export const getPlayList = Vue.resource(ROOT_API+'/liveVod/getListLiveVod?catagoryid={catagoryid}&page={page}&rows={rows}')
+export const getDiscussList = Vue.resource(ROOT_API+'/liveDiscuss/getListLiveDiscuss?livevodid={livevodid}&page={page}&rows={rows}')
 
 
 

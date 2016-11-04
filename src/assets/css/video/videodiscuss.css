@@ -1,0 +1,191 @@
+.video-discuss{
+	padding:0 10px;
+}
+.video-discuss .wrapper{
+	padding:10px;
+	width:100%;
+	background:#fff;
+}
+.video-discuss .wrapper .cm-form {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 30px;
+    position: relative;
+}
+.video-discuss .wrapper .cm-form .user-img {
+    vertical-align: top;
+    width: 40px;
+    position: absolute;
+    left:0px;
+    top:0;
+    height: 40px;
+    padding:0;
+    border-radius: 50%
+}
+.video-discuss .wrapper .cm-form .user-img .cm-img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    width:100%;
+}
+.video-discuss .wrapper .cm-form .cm-text {
+    vertical-align: top;
+    padding-left:80px;
+    height: 100px;
+    
+}
+@media screen and (max-width: 768px){
+    .video-discuss .wrapper .cm-form .cm-text{
+        padding-left:60px;
+    }
+}
+.video-discuss .wrapper .cm-form .cm-text textarea{
+    border: 1px solid #eee;
+    padding:10px;
+    width:100%;
+}
+
+.video-discuss .wrapper .cm-form .cm-btn {
+    display: block;
+    width: 80px;
+    font-size: 12px;
+    background: #0090ff;
+    outline: none;
+    border:none;
+    color: #fff;
+    float: right;
+    line-height: 30px;
+    text-align: center;
+    height: 30px;
+}
+.video-discuss .wrapper .cm-form .cm-btn:disabled{
+	background:#eee
+}
+
+
+.video-discuss .wrapper .comment-list{
+    overflow:hidden;
+}
+
+.video-discuss .wrapper .comment-list .comment-item{
+    margin-top:30px;
+    position: relative; 
+    overflow: hidden;
+}
+
+.video-discuss .wrapper .comment-list .comment-item .cm-img{
+    vertical-align: top;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    left:0;
+    top:0;
+    padding:0;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-img a{
+    display: block;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding:0;
+    overflow: hidden;
+}
+@media screen and (max-width: 768px){
+    .video-discuss .wrapper .cm-form .user-img{
+        width:30px;
+        height:30px;
+    }
+    .video-discuss .wrapper .cm-form .user-img .cm-img{
+        width:30px;
+        height:30px;
+    }
+    .video-discuss .wrapper .cm-form a.cm-btn{
+        width:80px;
+        height:30px;
+        margin-top:0;
+        font-size: 12px;
+        line-height: 30px;
+    }
+    .video-discuss .wrapper .comment-list .comment-item .cm-img{
+        width:40px;
+        height:40px;
+    }
+    .video-discuss .wrapper .comment-list .comment-item .cm-img a{
+        width:26px;
+        height:26px;
+        margin-top:10px;
+    }
+
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-img a img{
+    width:100%;
+    padding:0;
+    border-radius: 50%;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-cont{
+    padding:10px 0;
+    padding-left:80px;
+}
+@media screen and (max-width: 768px){
+    .video-discuss .wrapper .comment-list .comment-item .cm-cont{
+        padding:10px 0;
+        padding-left:60px;
+    }
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-cont.inside{
+    padding:10px;
+    background:#f5f8fa;
+    margin:10px 0;
+}
+
+.video-discuss .wrapper .comment-list .comment-item .cm-cont.inside .cm-name{
+    color:#909090;
+    font-size: 14px;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-cont.inside .cm-text{
+    color:#909090;
+
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-cont .cm-name{
+   font-size: 16px;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-cont .cm-name .cm-time{
+    color:#999;
+    margin-left:10px;
+    font-size: 12px;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-cont .cm-text{
+    margin-top:10px;
+    padding-right:15px;
+    text-align: justify;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.video-discuss .wrapper .comment-list .comment-item:after{
+    content: "";
+    clear: both;
+    height:0;
+    width:100%;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-others{
+    text-align: right;
+    overflow:hidden;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-others a{
+    color:#333; 
+    font-size: 12px;
+    display: inline-block;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-others a.isSetGood{
+    color:#999;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-others a.isSetGood b{
+    color:#666;
+}
+.video-discuss .wrapper .comment-list .comment-item .cm-others span{
+    margin:0 5px;
+    color:#999;
+    display: inline-block;
+    font-size: 12px;
+}

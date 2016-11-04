@@ -5,7 +5,7 @@
 			<ul>
 				<li v-for="item in playList" class="video-item video-content" :class="{'active': videoId==item.id}">
 					<div class="img-box">
-						<a v-link="{path:`/video/videodetail?id=${item.id}`}">
+						<a v-link="{path:`/video/videodetail/${item.id}`}">
 							<img :src="POSTER_URL+item.listimg ? POSTER_URL+item.listimg : '../../assets/img/shipingbeijing.png'">
 							<div class="img-back"></div>
 							<h5 class="play">播放</h5>
@@ -30,7 +30,7 @@
     
 	export default{
 		name:'videoscroll',
-		props:['playList','playListParams','isMorePlayList'],
+		props:['playList','playListParams','isMorePlayList','isFetching'],
 		data(){
 			return{
 				POSTER_URL:POSTER_URL
@@ -55,7 +55,9 @@
 	                    preventDefault: false
 	                });
 	                myScroll.on('scrollEnd',()=>{
-	                	if(!this.isMorePlayList) return
+	                	if(!this.isMorePlayList && !this.isFetching){
+	                		return false
+	                	}
 	                	this.playListParams.page++
 	                })
 				})

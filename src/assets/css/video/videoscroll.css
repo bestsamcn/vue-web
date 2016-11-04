@@ -112,4 +112,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
-
+.video-scroll .iscroll-list ul li .mark_custom{
+        position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 4px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    background-color: rgba(0,0,0,.4);
+    filter: none;
+}
+.video-scroll .iscroll-list ul li .mark_custom .mark_inner{
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+}
