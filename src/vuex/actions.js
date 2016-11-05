@@ -332,6 +332,34 @@ export const getDiscussList = ({ dispatch },discussParams)=>{
 	})
 	return promise
 }
+//提交评论
+export const saveVideoDiscuss = ({ dispatch },discussContent)=>{
+	let promise = new Promise((resolve,reject)=>{
+		api.saveVideoDiscuss(discussContent).then(res=>{
+			if(res.ok && res.data.retCode === 0 && res.data.data){
+				return resolve(res.data.data)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
+//点赞
+export const saveVideoGood = ({ dispatch },goodParams)=>{
+	let promise = new Promise((resolve,reject)=>{
+		api.saveVideoGood(goodParams).then(res=>{
+			if(res.ok && res.data.retCode === 0){
+				return resolve(res.data.retCode)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
 
 function makeActions(type){
 	//3个点不能少

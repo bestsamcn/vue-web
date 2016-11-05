@@ -6,10 +6,10 @@
     font-size:16px;
     color: #333;
 }
-#play-model{
+#player-modal{
 	width: 100%;
     padding-right: 0;
-    height:250px;
+    height:200px;
 }
 .full-screen{
 	margin-top:10px;

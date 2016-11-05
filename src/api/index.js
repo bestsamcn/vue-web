@@ -20,7 +20,9 @@ import {
     getLiveDetail,
     getVideoDetail,
     getPlayList,
-    getDiscussList
+    getDiscussList,
+    saveVideoDiscuss,
+    saveVideoGood
 } from './resource.js'
 export default {
 	//用户
@@ -46,5 +48,7 @@ export default {
 	//视频
 	getVideoDetail:(id)=>getVideoDetail.get(id),
 	getPlayList:(relatedParams)=>getPlayList.get(relatedParams),
-	getDiscussList:(discussParams)=>getDiscussList.get(discussParams)
+	getDiscussList:(discussParams)=>getDiscussList.get(discussParams),
+	saveVideoDiscuss:(discussContent)=>saveVideoDiscuss.save(discussContent),
+	saveVideoGood:(goodParams)=>saveVideoGood.save(goodParams)
 }

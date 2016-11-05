@@ -73,6 +73,8 @@ export const getLiveDetail = Vue.resource(ROOT_API + '/liveVod/getById?id={id}')
 export const getVideoDetail = Vue.resource(ROOT_API+'/liveVod/getById?id={id}')
 export const getPlayList = Vue.resource(ROOT_API+'/liveVod/getListLiveVod?catagoryid={catagoryid}&page={page}&rows={rows}')
 export const getDiscussList = Vue.resource(ROOT_API+'/liveDiscuss/getListLiveDiscuss?livevodid={livevodid}&page={page}&rows={rows}')
+export const saveVideoDiscuss = Vue.resource(ROOT_API+'/liveDiscuss/add')
+export const saveVideoGood = Vue.resource(ROOT_API+'/liveDiscuss/edit')
 
 
 

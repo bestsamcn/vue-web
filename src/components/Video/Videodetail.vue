@@ -7,7 +7,7 @@
 	    	<Videoplay :video-info="videoDetail" :video-id="videoId"></Videoplay>
 	    	<Videoscroll :play-list="playList" :play-list-params.sync="playListParams" :is-fetching="isFetching" :is-more-play-list="isMorePlayList"></Videoscroll>
             <Videointr :video-info="videoDetail"></Videointr>
-            <Videodiscuss :discuss-list.sync="discussList" :is-more-discuss-list="isMoreDiscussList"></Videodiscuss>
+            <Videodiscuss :video-id="videoId" :discuss-list-params.sync="discussListParams" :discuss-list.sync="discussList" :is-more-discuss-list.sync="isMoreDiscussList"></Videodiscuss>
 	    </div>
 	</div>
 </template>
