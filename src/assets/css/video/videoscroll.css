@@ -1,0 +1,130 @@
+/*视频轮播列表*/
+.video-scroll{
+    padding:0 10px;
+    overflow: hidden;
+    margin-bottom:10px;
+}
+.video-scroll .iscroll-list{
+    width:100%;
+    overflow: hidden;
+    max-height: 150px;
+    margin: 0 auto;
+    float: left;
+    height: 100%;
+    padding: 0;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+}
+.video-scroll .iscroll-list ul{
+    list-style: none;
+    padding: 0;
+    font-size: 0;
+    width:100%;
+    margin: 0;
+    white-space: nowrap;
+}
+.video-scroll .iscroll-list ul li{
+    overflow: hidden;
+    text-align: center;
+    vertical-align: top;
+    width:120px;
+    background:#fff;
+    display: inline-block;
+    height: 100%;
+    margin-left:10px;
+}
+.video-scroll .iscroll-list ul li:nth-of-type(1){
+    margin-left:0
+}
+.video-scroll .iscroll-list ul li .img-box{
+        position: relative;
+    overflow: hidden;
+}
+.video-scroll .iscroll-list ul li .img-box a{
+        color: #222;
+        display: block;
+        width:100%;
+    vertical-align: top;
+}
+.video-scroll .iscroll-list ul li .img-box a img{
+    width:100%
+}
+.video-scroll .iscroll-list ul li .img-box .mask{
+        position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    box-pack: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: rgba(0,0,0,.5);
+    border: 1px solid #0090ff;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: .12rem;
+    color: #fff;
+}
+.video-scroll .iscroll-list ul li.active .img-box .mask{
+    display: -webkit-box;
+}
+.video-scroll .iscroll-list ul li .item-info{
+    padding: 0 10px;
+    height: 41px;
+}
+.video-scroll .iscroll-list ul li .item-info p{
+    font-size: 12px;
+    margin-top: 0;
+    line-height: 18px;
+    text-align: justify;
+    margin-bottom: 0;
+    padding: 5px 0 0;
+    white-space: normal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+    line-clamp: 2;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.video-scroll .iscroll-list ul li .mark_custom{
+        position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 4px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    background-color: rgba(0,0,0,.4);
+    filter: none;
+}
+.video-scroll .iscroll-list ul li .mark_custom .mark_inner{
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+}

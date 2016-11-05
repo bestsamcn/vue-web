@@ -3,7 +3,7 @@
 }
 .video-play h4{
 	 margin-top: 10px;
-    font-size:18px;
+    font-size:16px;
     color: #333;
 }
 #play-model{
@@ -11,8 +11,12 @@
     padding-right: 0;
     height:250px;
 }
+.full-screen{
+	margin-top:10px;
+}
 @media screen and (max-width: 768px) and (orientation: portrait){
     .full-screen {
         position: static;
+
     }
 }

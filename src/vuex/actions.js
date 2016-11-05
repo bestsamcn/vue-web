@@ -317,6 +317,21 @@ export const getPlayList = ({ dispatch },playParams)=>{
 	})
 	return promise
 }
+//获取评论列表
+export const getDiscussList = ({ dispatch },discussParams)=>{
+	let promise = new Promise((resolve,reject)=>{
+		api.getDiscussList(discussParams).then(res=>{
+			if(res.ok && res.data.retCode === 0 && res.data.rows){
+				//需要用到总数
+				return resolve(res.data)
+			}
+			reject(res.data.retCode)
+		},res=>{
+			reject(res)
+		})
+	})
+	return promise
+}
 
 function makeActions(type){
 	//3个点不能少

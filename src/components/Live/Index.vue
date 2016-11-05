@@ -75,6 +75,10 @@
                     }else{
                         this.isMore = true
                     }
+                },res=>{
+                    this.isMore = false
+                }).catch(e=>{
+                    this.isMore = false
                 })
             },
             refreshVideo(){

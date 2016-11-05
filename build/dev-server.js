@@ -54,7 +54,8 @@ app.use(hotMiddleware)
 
 // serve pure static assets
 var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+//修改指定静态文静路径
+app.use('/assets', express.static('./src/assets'))
 
 module.exports = app.listen(port, function (err) {
   if (err) {

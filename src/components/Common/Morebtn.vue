@@ -1,7 +1,7 @@
 <style src="../../assets/css/common/morebtn.css"></style>
 <template>
 	<div class="more-video">
-	    <a @click="getMore">加载更多</a>
+	    <a @click="getMore">更多</a>
 	</div>
 </template>
 <script>
