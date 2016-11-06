@@ -26,6 +26,7 @@ import $$ from './utils/tools.js'
 import { setUserBase, setUserInfo, userLogout, setLoading, getAllTagList, getCategoryList } from './vuex/actions.js'
 
 //css/js
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import 'reset.css'
 import 'animate.css'

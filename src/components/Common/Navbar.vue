@@ -3,13 +3,10 @@
 <style src="../../assets/css/common/navbar.css" scoped></style>
 <template>
 	<div class="nav">
-		<!-- <a v-link="{path:'/index'}">首页</a>
-		<a v-link="{path:'/cart'}">商品</a>
-		<a v-link="{path:'/count'}">购物车<i>{{cartsAmout}}</i></a> -->
 		<a href="javascript:;" @click="toggleAside()" class="icon fa fa-navicon fa-lg left-btn"></a>
 		<span class="header-tit">{{title}}</span>
-        <a href="javascript:;" v-if="!userToken" class="icon fa fa-user-circle-o fa-lg right-btn"></a>
-		<a href="javascript:;" v-if="userToken" class="right-btn">
+        <a @click="goUrl('signin')" v-if="!userToken" class="icon fa fa-user-circle-o fa-lg right-btn"></a>
+		<a @click="goUrl('userinfo')" v-if="userToken" class="right-btn">
             <img :src="userInfo.headimg ? IMG_URL+userInfo.headimg :'../assets/img/user-nologin.png'" alt="avatar">      
         </a>
 	</div>
@@ -51,7 +48,13 @@
         methods:{
         	toggleAside(){
         		this.isShowAside = true;
-        	}
+        	},
+            goUrl(name){
+                this.$route.router.go({
+                    name:name
+                })
+                this.isShowAside = false
+            }
         }
 	}
 </script>

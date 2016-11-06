@@ -10,6 +10,7 @@ import $ from 'jquery'
 import '../node_modules/owlcarousel/owl-carousel/owl.carousel.min.js'
 import './assets/js/tagcanvas.js'
 import './assets/js/countdown.js'
+import './assets/js/jcrop.js'
 
 
 
@@ -20,6 +21,8 @@ Vue.use(filter)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueResource)
+
+
 Vue.use(VueLazyload, {
   error: '/assets/img/404.png',
   loading: '/assets/img/loading.svg'

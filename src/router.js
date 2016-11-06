@@ -9,6 +9,7 @@ import Shop from './components/Shop/Index.vue'
 import Shopcount from './components/Shop/Count.vue'
 import Sign from './components/Sign/Index.vue'
 import Signup from './components/Sign/Signup.vue'
+import Usercenter from './components/Sign/Usercenter.vue'
 import Liveindex from './components/Live/Index.vue'
 import Livedetail from './components/Live/Livedetail.vue'
 import Videoindex from './components/Video/Index.vue'
@@ -99,6 +100,25 @@ export default router => {
                     name:'signup',
                     title:'注册',
                     component: Signup
+                }
+            }
+        },
+        '/user':{
+            name:'userinfo',
+            title:'用户中心',
+            component:{
+                template: '<router-view></router-view>'
+            },
+            subRoutes:{
+                '/':{
+                    name:'userinfo',
+                    title:'用户信息',
+                    component:Usercenter
+                },
+                '/userinfo':{
+                    name:'userinfo',
+                    title:'用户信息',
+                    component:Usercenter
                 }
             }
         }

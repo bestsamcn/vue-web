@@ -30,6 +30,9 @@
 .video-intr .wrapper .intr-cont .text-center{
 	text-align: center;
 }
+.video-intr .wrapper .intr-cont .text-center p{
+    line-height: 20px;
+}
 .video-intr .wrapper .intr-cont .text-center a{
 	font-size: 12px;
 	color:#0090ff

@@ -21,33 +21,27 @@ Vue.http.options.xhr = {withCredentials: true}
 let httpTimer = null;
 //请求全局设置
 Vue.http.interceptors.push((request,next)=>{
-	httpTimer = setTimeout(()=>{
-        common.state.isLoading = true
-	},500)
+
+    common.state.isLoading = true
+
 	request.credentials=true;
 	next(response=>{
-		if(httpTimer){
-			clearTimeout(httpTimer)
-			setTimeout(()=>{
-                common.state.isLoading = false
-			},500)
-		}
         common.state.isLoading = false
 	 	return response
 	})
 })
-Vue.http.interceptors.push((request,next)=>{
-	next(response=>{
-		if(httpTimer){
-			clearTimeout(httpTimer)
-			setTimeout(()=>{
-                common.state.isLoading = false
-			},500)
-		}
-        common.state.isLoading = false
-	 	return response
-	})
-})
+// Vue.http.interceptors.push((request,next)=>{
+// 	next(response=>{
+// 		if(httpTimer){
+// 			clearTimeout(httpTimer)
+// 			setTimeout(()=>{
+//                 common.state.isLoading = false
+// 			},500)
+// 		}
+//         common.state.isLoading = false
+// 	 	return response
+// 	})
+// })
 
 //用户部分
 export const userLogin = Vue.resource(ROOT_API + '/user/login')
