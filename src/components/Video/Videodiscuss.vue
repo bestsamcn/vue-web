@@ -8,7 +8,7 @@
 			    	    <img :src="userInfo.headimg ? IMG_URL+userInfo.headimg :'../../assets/img/user-nologin.png'" class="cm-img" id="cm-user-img">
 		            </div>
 		            <div class="col-xs-12 col-sm-12 cm-text">
-		            	<textarea rows="3" :disabled="!userToken" placeholder="{{userToken ? '我的评论' : '请先登录'}}" v-model="discussContent.content"></textarea>
+		            	<textarea rows="3" id="discuss-content" :disabled="!userToken" placeholder="{{userToken ? '我的评论' : '请先登录'}}" v-model="discussContent.content"></textarea>
 		            </div>
 				</div>
 				<button class="cm-btn" :disabled="!userToken" @click="pushVideoDiscuss()">评论</button>
@@ -118,9 +118,11 @@
             		this.setToast('木有找到视频id')
             		return
             	}
-            	if(this.discussContent.content.indexOf('@') !==-1){
+            	if(this.discussContent.content.indexOf('@') === 0){
             		this.discussContent.content.replace('@' + this.tempName + '：', '')
-            	}
+            	}else{
+                    this.discussContent.pid = 0
+                }
             	this.saveVideoDiscuss(this.discussContent).then(res=>{
             		let parentDiscuss = null
             		if(this.discussContent.pid !== 0){
@@ -156,8 +158,10 @@
             },
             setReply(parentid,name){
                 this.discussContent.pid  = parentid
-                this.discussContent.content = '@'+name+': '
-                this.tempName = '@'+name+': '
+                this.discussContent.content = '@'+name+'：'
+                this.tempName = '@'+name+'：'
+                document.getElementById("discuss-content").blur()
+                document.getElementById('discuss-content').focus()
             },
             setGood(discussid){
                 if(!this.userToken){
