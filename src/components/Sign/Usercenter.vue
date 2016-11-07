@@ -11,36 +11,39 @@
 			<h4>用户名：{{userInfo.account}}</h4>
 			<div class="user-img">
 			    <label>
-					<img   :src="userImg || (userInfo.headimg ? IMG_URL+userInfo.headimg : '../../assets/img/user-nologin.png')">
+					<img   :src="imgBaseData || (userInfo.headimg ? IMG_URL+userInfo.headimg : '../../assets/img/user-nologin.png')">
 					<input type="file" style="display:none" @change="fileChange($event)">
 				</label>
 			</div>
 		</div>
-		<modal title="剪切图片" cancel-text="关闭" ok-text="确定" :closeCallback="close" effect="fade" :callback="tellSelected" small :show.sync="showModel">
-		  	<div slot="modal-body" class="modal-body">
-		  		<img v-if="!!userImgData" :src="userImgData" id="preview-img">
+		<Modal title="剪切图片" cancel-text="关闭" ok-text="确定" :no-callback="close" effect="fade" :ok-callback="getCorpImg" small :show.sync="showModal">
+		  	<div slot="modal-body" class="modal-body" id="preview-img">
+		  		<img v-if="!!imgCropData" :src="imgCropData" >
 		  	</div>
-		</modal>
+		</Modal>
 	</div>
 </template>
 <script>
     import { setToast } from '../../vuex/actions.js'
     import { IMG_URL } from '../../api/config.js'
-    import { modal } from 'vue-strap'
+    import Modal from '../common/Modal'
 	export default{
 		name:'usercenter',
 		data(){
 			return {
-				userImg:'',
-				userImgData:'',
+				//最终发给服务器的数据
+				imgBaseData:'',
+				//临时作为剪切用的数据
+				imgCropData:'',
 				IMG_URL:IMG_URL,
-				showModel:false,
+				showModal:false,
 				jcropApi:null,
+				//截取后的坐标，用来canvas剪切用
 				coords:null
 			}
 		},
 		components:{
-			modal
+			Modal
 		},
 		vuex:{
 			getters:{
@@ -60,6 +63,7 @@
 			}
 		},
 		methods:{
+			//返回base64编码
 			getDataUrl(file){
 				let that = this
 				let filelll=file
@@ -80,25 +84,26 @@
 				})
 				return promise
 			},
+			//选择图片
 			fileChange($event){
-				var file = null
-				file = $event.srcElement.files[0]
+				let file = $event.srcElement.files[0]
 				if(!/image\/\w+/.test(file.type)){ 
 					this.setToast("请确保文件为图像类型"); 
 					return false; 
 				}
 				let that = this
+				that.imgCropData = null
 				this.getDataUrl(file).then(res=>{
-		            that.userImgData = res
-					this.showModel = true
-					$('#preview-img').attr('src',res)
-					this.setCrop()
+		            that.imgCropData = res
+					this.showModal = true
 				}).catch(e=>{
 					console.log(e)
 				})
 			},
-			setCrop(){
-				let previewImg = $('#preview-img')
+			//设置剪切
+			setCropImg(){
+				if(!this.imgCropData) return 
+				let previewImg = $('#preview-img').find('img')
 				let that = this
 				previewImg.Jcrop({
 		    		aspectRatio:1,
@@ -108,18 +113,35 @@
 		    	},function(){
                     that.jcropApi = this
 		    	})
+		    	this.jcropApi.enable()
 			},
-			tellSelected(){
+			getCorpImg(){
+				//获取剪切坐标
 				this.coords = this.jcropApi.tellSelect();
-				console.log(this.coords)
+
+				//剪切开始
+				let image = new Image()
+				image.src = this.imgCropData
+				let canvas = $('<canvas width="'+this.coords.w+'" height="'+this.coords.h+'"></canvas>')[0]
+				let ctx=canvas.getContext('2d')
+				ctx.drawImage(image,this.coords.x,this.coords.y,this.coords.w,this.coords.h,0,0,this.coords.w,this.coords.h)
+				this.imgBaseData = canvas.toDataURL()
+
+				//剪切成功后imgCropData作为临时数据清空，收起modal，清除jcrop
 				setTimeout(()=>{
-                	this.userImgData = ''
+                	this.imgCropData = ''
+                	this.showModal = false
+				    this.jcropApi.destroy()
 				},500)
 			},
 			close(){
-				alert()
+                this.imgCropData = ''
+                this.jcropApi.destroy()
 			}
 
+		},
+		watch:{
+			imgCropData:'setCropImg'
 		}
 	}
 </script>

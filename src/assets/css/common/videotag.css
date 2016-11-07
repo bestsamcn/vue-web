@@ -24,6 +24,7 @@
 	border:1px solid #eee;
 	font-size: 12px;
 	display: block;
+    font-weight: 400
 }
 
 .video-tag .tag-wrapper label input:checked+span{

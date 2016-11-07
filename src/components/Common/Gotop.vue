@@ -30,7 +30,7 @@
 	                let nScrollTop
 	                let temp =()=>{
 	                    nScrollTop = oTarget.scrollTop || oTarget.scrollTop;
-	                    if (nScrollTop > 500) {
+	                    if (nScrollTop > 800) {
 	                        $$.addClass(oGotop,'show');
 	                    } else {
 	                        $$.removeClass(oGotop,'show');
