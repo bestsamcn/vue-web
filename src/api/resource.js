@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import VueCookie from 'vue-cookie'
-//直接引入，想都想不多
 import common from '../vuex/modules/common.js'
 
 import {
@@ -12,14 +11,13 @@ import {
 Vue.use(VueResource)
 Vue.use(VueCookie)
 
-//各种处理,都很重要
+//请求全局设置
 Vue.http.options.emulateHTTP = true
 Vue.http.options.emulateJSON = true
 Vue.http.options.crossOrigin = true
 Vue.http.options.xhr = {withCredentials: true}
 
 let httpTimer = null;
-//请求全局设置
 Vue.http.interceptors.push((request,next)=>{
 
     common.state.isLoading = true

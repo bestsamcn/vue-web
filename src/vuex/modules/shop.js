@@ -12,7 +12,6 @@ import {
 	DEL_ITEM
 } from '../mutation-types.js'
 
-//初始化数据
 const state = {
 	iphone6s:{
 		name:'Apple/苹果 iPhone 6S',
@@ -37,9 +36,6 @@ const state = {
 	carts:[]
 }
 
-//mutation函数控制
-//activeStyle == active class
-//activeStyleUrl == 当前选择图片
 
 const mutations = {
 	[CHANGE_STYLE](state,styleName,styleUrl){
