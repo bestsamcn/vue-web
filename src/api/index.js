@@ -27,7 +27,7 @@ import {
 export default {
 	//用户
 	userLogin: (data) => userLogin.save(data),
-	userLogout: () => userLogout.delete(),
+	userLogout: () => userLogout.save(),
 	setUserBase: () => setUserBase.get(),
 	setUserInfo: (id) => setUserInfo.get({id: id}),
 

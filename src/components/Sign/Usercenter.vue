@@ -31,7 +31,7 @@
 		name:'usercenter',
 		data(){
 			return {
-				//最终发给服务器的数据
+				//最终发给服务器的数据,记住只要第一个逗号后面的字符串
 				imgBaseData:'',
 				//临时作为剪切用的数据
 				imgCropData:'',
